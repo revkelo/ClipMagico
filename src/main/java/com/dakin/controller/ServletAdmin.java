@@ -68,7 +68,7 @@ public class ServletAdmin extends HttpServlet {
 
 		// Verificar las credenciales del administrador
 		if (ADMIN_USERNAME.equals(username) && ADMIN_PASSWORD.equals(password)) {
-			resp.sendRedirect("index.html");
+			resp.sendRedirect("vendedor.html");
 		} else {
 			// Si las credenciales son incorrectas, mostrar una alerta y redirigir al
 			// usuario de vuelta al formulario de inicio de sesión
