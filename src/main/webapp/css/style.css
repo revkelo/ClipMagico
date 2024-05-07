@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  color: "white";
+  text-align: center;
+  padding: 10px 0;
+}
+
+.navbar-text {
+  font-size: 1.5rem;
+}

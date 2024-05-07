@@ -1,5 +1,6 @@
 package com.dakin.model;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,9 +17,10 @@ public class BdSql {
             // Driver JDBC
             Class.forName("com.mysql.jdbc.Driver");
             // URL de conexión a la base de datos
-            String servidor = "jdbc:mysql://monorail.proxy.rlwy.net:26721/railway";
+            String servidor = "jdbc:mysql://26.6.131.178:3306/clipmagico";
+            //El root es el nombre de usuario por default. No hay contraseña
             String usuario = "root";
-            String pass = "OhxcmkCNBjWBntPCYFuLWRKKlOvwcPGg";
+            String pass = "";
             // Iniciar la conexión
             conexion = DriverManager.getConnection(servidor, usuario, pass);
             System.out.println("Conexión a MySQL exitosa");
