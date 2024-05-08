@@ -1,80 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi pÃ¡gina con Bootstrap</title>
-  <!-- Agregar enlaces a los estilos de Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Enlace al archivo de estilos CSS -->
-  <link rel="stylesheet" href="./css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mi página con Bootstrap</title>
+	<!-- Agregar enlaces a los estilos de Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Enlace al archivo de estilos CSS -->
+	<link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-  <div class="container mt-3 text-center"> <!-- AÃ±adida la clase text-center -->
-    <!-- Barra de navegaciÃ³n -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <span class="navbar-text">Vendedor</span>
-            </li>
-          </ul>
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Cerrar sesiÃ³n</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+	<div class="container mt-3 text-center"> <!-- Añadida la clase text-center -->
+		<!-- Barra de navegación -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<span class="navbar-text">Vendedor</span>
+						</li>
+					</ul>
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Cerrar sesión</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-    <!-- Contenido de la pÃ¡gina -->
-    <div class="row mt-3" id="contenidoNormal">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body text-center"> <!-- AÃ±adida la clase text-center -->
-            <h5 class="card-title">Venta</h5>
-            <!-- BotÃ³n para registrar -->
-            <button type="button" class="btn btn-success" id="btnRegistrar">Registrar</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body text-center"> <!-- AÃ±adida la clase text-center -->
-            <h5 class="card-title">Arqueo</h5>
-            <!-- BotÃ³n para arqueo -->
-            <button type="button" class="btn btn-success" id="btnArqueo">Arqueo</button>
-          </div>
-        </div>
-      </div>
-    </div>
+		<!-- Contenido de la página -->
+		<div class="row mt-3" id="contenidoNormal">
+			<!-- Botón para Registrar Venta -->
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						<h5 class="card-title">Venta</h5>
+						<!-- Botón para registrar -->
+						<button type="button" class="btn btn-success" id="btnRegistrar">Registrar</button>
+					</div>
+				</div>
+			</div>
+			<!-- Botón para Arqueo -->
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						<h5 class="card-title">Arqueo</h5>
+						<!-- Botón para arqueo -->
+						<button type="button" class="btn btn-success" id="btnArqueo">Arqueo</button>
+					</div>
+				</div>
+			</div>
+			<!-- Botón para Crear Cliente -->
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						<h5 class="card-title">Crear Cliente</h5>
+						<!-- Botón para crear cliente -->
+						<button type="button" class="btn btn-primary" id="btnCrearCliente">Crear</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!-- Formulario de venta (inicialmente oculto) -->
-    <div class="row mt-3" id="formularioVenta" style="display: none;">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body text-center"> <!-- AÃ±adida la clase text-center -->
-            <h5 class="card-title">Formulario de Venta</h5>
-            <!-- AquÃ­ puedes agregar el contenido del formulario de venta -->
-            <button type="button" class="btn btn-primary" id="btnAtras">AtrÃ¡s</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+		<!-- Formulario de venta (inicialmente oculto) -->
+		<div class="row mt-3" id="formularioVenta" style="display: none;">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body text-center"> <!-- Añadida la clase text-center -->
+						<h5 class="card-title">Formulario de Venta</h5>
+						<!-- Aquí puedes agregar el contenido del formulario de venta -->
+						<button type="button" class="btn btn-primary" id="btnAtrasVenta">Atrás</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Creado por Dakin.</span>
-    </div>
-  </footer>
+		<!-- Formulario de cliente (inicialmente oculto) -->
+		<div class="row mt-3" id="formularioCliente" style="display: none;">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body text-center"> <!-- Añadida la clase text-center -->
+						<h5 class="card-title">Formulario de Cliente</h5>
+						<!DOCTYPE html>
 
-  <!-- Agregar el script de Bootstrap y JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Enlace al archivo de scripts JavaScript -->
-  <script src="./js/script.js"></script>
+						<div class="container">
+							<div class="row justify-content-center">
+								<div class="col-md-6">
+									<div class="card shadow">
+										<div class="card-body">
+											<h2 class="card-title text-center mb-4">Formulario de Cliente</h2>
+											<form id="clienteForm">
+												<div class="form-group">
+													<label for="nombre">Nombre:</label>
+													<input type="text" id="nombre" name="nombre" class="form-control"
+														required>
+												</div>
+												<div class="form-group">
+													<label for="direccion">Dirección:</label>
+													<input type="text" id="direccion" name="direccion"
+														class="form-control" required>
+												</div>
+												<div class="form-group">
+													<label for="telefonoC">Teléfono:</label>
+													<input type="tel" id="telefonoC" name="telefonoC"
+														class="form-control" required>
+												</div>
+												<button type="submit" class="btn btn-primary btn-block">Enviar</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<button type="button" class="btn btn-primary" id="btnAtrasCliente">Atrás</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted">Creado por Dakin.</span>
+		</div>
+	</footer>
+
+	<!-- Agregar el script de Bootstrap y JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Enlace al archivo de scripts JavaScript -->
+	<script src="./js/script.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="script.js"></script>
+
 </body>
+
 </html>
