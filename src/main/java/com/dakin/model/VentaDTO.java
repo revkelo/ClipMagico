@@ -1,5 +1,7 @@
 package com.dakin.model;
 
+import java.sql.Date;
+
 public class VentaDTO {
 	// Atributos
 	private int idVenta;
@@ -8,18 +10,21 @@ public class VentaDTO {
 	private int total;
 	private int cantidad;
 	private String metodo_pago;
+	private Date fecha;
+	
 	public VentaDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	// Constructor
-	public VentaDTO(int idVenta, int idCliente, int idProducto, int total, int cantidad ,String metodo_pago) {
+	public VentaDTO(int idVenta, int idCliente, int idProducto, int total, int cantidad ,String metodo_pago ,Date fecha) {
 		this.idVenta = idVenta;
 		this.idCliente = idCliente;
 		this.idProducto = idProducto;
 		this.total = total;
 		this.cantidad = cantidad;
 		this.metodo_pago = metodo_pago;
+		this.fecha = fecha;
 	}
 
 	public int getIdVenta() {
@@ -70,4 +75,12 @@ public class VentaDTO {
 		this.metodo_pago = metodo_pago;
 	}
 
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
 }
