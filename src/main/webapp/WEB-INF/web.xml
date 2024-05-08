@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-	<display-name>formulario con servlets</display-name>
+	<display-name>ClipMagico</display-name>
 	<description>
-		Pagina parque diversiones
+		Pagina ClipMagico
 	</description>
 	<distributable></distributable>
 	<servlet>
