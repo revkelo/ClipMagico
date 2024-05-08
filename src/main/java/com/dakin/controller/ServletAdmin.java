@@ -75,7 +75,7 @@ public class ServletAdmin extends HttpServlet {
 			resp.setContentType("text/html");
 			PrintWriter out = resp.getWriter();
 			out.println("<html><body onload=\"showLoginError()\">  <h1>ERROR</h1> </body></html>");
-			resp.setHeader("Refresh", "0; URL=login.jsp");
+			resp.setHeader("Refresh", "5; URL=login.jsp");
 
 			out.close();
 		}
