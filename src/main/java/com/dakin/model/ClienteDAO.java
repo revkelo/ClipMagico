@@ -14,14 +14,13 @@ public class ClienteDAO {
 	}
 
 	// Agregar cliente
-	public void agregarCliente(int idCliente, String nombre, String direccion, String telefonoC) {
+	public void agregarCliente(String nombre, String direccion, String telefonoC) {
 
-		String query = "INSERT INTO Cliente (id_cliente, nombre, direccion, telefonoC) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO Cliente (nombre, direccion, telefonoC) VALUES (?, ?, ?)";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idCliente);
-			statement.setString(2, nombre);
-			statement.setString(3, direccion);
-			statement.setString(4, telefonoC);
+			statement.setString(1, nombre);
+			statement.setString(2, direccion);
+			statement.setString(3, telefonoC);
 			statement.executeUpdate();
 			System.out.println("Cliente agregado correctamente.");
 		} catch (Exception e) {

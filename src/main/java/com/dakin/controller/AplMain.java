@@ -10,7 +10,7 @@ public class AplMain {
 //	    db.createTables();
 	    
 	    ClienteDAO cli = new ClienteDAO(db);
-	    cli.agregarCliente(0, "Juan", "Calle 123 123 32", "301340123");
+	    cli.agregarCliente("Juan", "Calle 123 123 32", "301340123");
 	}
 }
 
