@@ -7,18 +7,19 @@ public class VentaDTO {
 	private int idProducto;
 	private int total;
 	private int cantidad;
-
+	private String metodo_pago;
 	public VentaDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	// Constructor
-	public VentaDTO(int idVenta, int idCliente, int idProducto, int total, int cantidad) {
+	public VentaDTO(int idVenta, int idCliente, int idProducto, int total, int cantidad ,String metodo_pago) {
 		this.idVenta = idVenta;
 		this.idCliente = idCliente;
 		this.idProducto = idProducto;
 		this.total = total;
 		this.cantidad = cantidad;
+		this.metodo_pago = metodo_pago;
 	}
 
 	public int getIdVenta() {
@@ -59,6 +60,14 @@ public class VentaDTO {
 
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public String getMetodo_pago() {
+		return metodo_pago;
+	}
+
+	public void setMetodo_pago(String metodo_pago) {
+		this.metodo_pago = metodo_pago;
 	}
 
 }
