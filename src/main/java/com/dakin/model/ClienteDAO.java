@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ClienteDAO {
 
@@ -43,23 +44,23 @@ public class ClienteDAO {
 
 	}
 
-	// Mostrar cliente
-	public ClienteDTO mostrarCliente(int idCliente) {
-		ClienteDTO cliente = null;
+	public ArrayList<ClienteDTO> mostrarClientes() {
+	    ArrayList<ClienteDTO> clientes = new ArrayList<>();
 
-		String query = "SELECT * FROM Cliente WHERE id_cliente = ?";
-		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idCliente);
-			try (ResultSet resultSet = statement.executeQuery()) {
-				if (resultSet.next()) {
-					cliente = new ClienteDTO(resultSet.getInt("id_cliente"), resultSet.getString("nombre"),
-							resultSet.getString("direccion"), resultSet.getString("telefonoC"));
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return cliente;
+	    String query = "SELECT * FROM Cliente";
+	    try (PreparedStatement statement = conexion.prepareStatement(query);
+	         ResultSet resultSet = statement.executeQuery()) {
+	        while (resultSet.next()) {
+	            ClienteDTO cliente = new ClienteDTO(resultSet.getInt("id_cliente"),
+	                    resultSet.getString("nombre"),
+	                    resultSet.getString("direccion"),
+	                    resultSet.getString("telefonoC"));
+	            clientes.add(cliente);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return clientes;
 	}
 
 	// Actualizar cliente

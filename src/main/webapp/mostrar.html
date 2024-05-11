@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Select</title>
+</head>
+<body>
+    <h2>Seleccione una opción:</h2>
+   	<form class="form" action="/ClipMagico/listar" method="GET">
+        <label for="seleccion">Seleccionar:</label>
+        <select id="mostrar" name="mostrar">
+            <option value="cliente">Cliente</option>
+            <option value="producto">Producto</option>
+            <option value="proveedor">Proveedor</option>
+            <option value="venta">Venta</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    
+    
+
+</body>
+</html>

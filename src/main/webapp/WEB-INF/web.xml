@@ -9,14 +9,24 @@
 		<servlet-name>ServletAdmin</servlet-name>
 		<servlet-class>com.dakin.controller.ServletAdmin</servlet-class>
 	</servlet>
-	
+
+	<servlet>
+		<servlet-name>ServletListar</servlet-name>
+		<servlet-class>com.dakin.controller.ServletListar</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>ServletListar</servlet-name>
+		<url-pattern>/listar</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>ServletAdmin</servlet-name>
 		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
-	
-	    <welcome-file-list>
-        <welcome-file>index.html</welcome-file> 
-    </welcome-file-list>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 </web-app>

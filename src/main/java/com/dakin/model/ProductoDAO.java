@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ProductoDAO {
 
@@ -40,22 +41,26 @@ public class ProductoDAO {
     }
 
     // Mostrar producto
-    public ProductoDTO mostrarProducto(int idProducto) {
-        ProductoDTO producto = null;
-        String query = "SELECT * FROM Producto WHERE id_producto = ?";
-        try (PreparedStatement statement = conexion.prepareStatement(query)) {
-            statement.setInt(1, idProducto);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    producto = new ProductoDTO(resultSet.getInt("id_producto"), resultSet.getString("nombre"),
-                            resultSet.getString("descripcion"), resultSet.getInt("id_proveedor"));
-                }
+    public ArrayList<ProductoDTO> mostrarProductos() {
+        ArrayList<ProductoDTO> productos = new ArrayList<>();
+        String query = "SELECT * FROM Producto";
+        try (PreparedStatement statement = conexion.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                ProductoDTO producto = new ProductoDTO(
+                        resultSet.getInt("id_producto"),
+                        resultSet.getString("nombre"),
+                        resultSet.getString("descripcion"),
+                        resultSet.getInt("id_proveedor")
+                );
+                productos.add(producto);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return producto;
+        return productos;
     }
+
 
     // Actualizar producto
     public void actualizarProducto(int idProducto, String nombre, String descripcion, int idProveedor) {

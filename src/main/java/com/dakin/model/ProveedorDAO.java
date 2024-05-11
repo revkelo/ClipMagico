@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ProveedorDAO {
   
@@ -44,22 +45,27 @@ public class ProveedorDAO {
 	 
 //	(+) mostrarProveedor(idProveedor: int)
 
-	 public ProveedorDTO mostrarProveedor(int idProveedor) {
-		 	ProveedorDTO proveedor = null;
-	        String query = "SELECT * FROM Proveedor WHERE id_proveedor = ?";
-	        try (PreparedStatement statement = conexion.prepareStatement(query)) {
-	            statement.setInt(1, idProveedor);
-	            try (ResultSet resultSet = statement.executeQuery()) {
-	                if (resultSet.next()) {
-	                	proveedor = new ProveedorDTO(resultSet.getInt("id_proveedor"), resultSet.getString("nombre"),
-	                            resultSet.getString("direccion"), resultSet.getString("NIT"), resultSet.getString("telefonoP"));
-	                }
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	        return proveedor;
-	    }
+	 public ArrayList<ProveedorDTO> mostrarProveedores() {
+		    ArrayList<ProveedorDTO> proveedores = new ArrayList<>();
+		    String query = "SELECT * FROM Proveedor";
+		    try (PreparedStatement statement = conexion.prepareStatement(query);
+		         ResultSet resultSet = statement.executeQuery()) {
+		        while (resultSet.next()) {
+		            ProveedorDTO proveedor = new ProveedorDTO(
+		                    resultSet.getInt("id_proveedor"),
+		                    resultSet.getString("nombre"),
+		                    resultSet.getString("direccion"),
+		                    resultSet.getString("NIT"),
+		                    resultSet.getString("telefonoP")
+		            );
+		            proveedores.add(proveedor);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    return proveedores;
+		}
+
 	 
 //	(+) actualizarProveedor(idProveedor: int, nombre: String, direccion: String, telefono: String, NIT: String)
 

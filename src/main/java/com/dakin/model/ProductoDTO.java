@@ -5,7 +5,7 @@ public class ProductoDTO {
     private int idProducto;
     private String nombre;
     private String descripcion;
-    private int idProveedor; // Esto podría ser un objeto Proveedor en lugar de un int
+    private int idProveedor;
 
     public ProductoDTO() {
 		// TODO Auto-generated constructor stub
