@@ -5,6 +5,7 @@ package com.dakin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author Daniela
  * @author Nicolas
  */
-public class ServletAdmin extends HttpServlet {
+public class ServletVendedor extends HttpServlet {
 
 	/**
 	 * Atributo tipo final long para el id que serializara
@@ -27,11 +28,11 @@ public class ServletAdmin extends HttpServlet {
 	/**
 	 * Constante que representn el nombre de usuario del administrador
 	 */
-	private static final String ADMIN_USERNAME = "admin";
+	private static final String VEND_USERNAME = "vend";
 	/**
 	 * Constante que representa la contraseña del administrador
 	 */
-	private static final String ADMIN_PASSWORD = "admin";
+	private static final String VEND_PASSWORD = "vend";
 
 	/**
 	 * Método que maneja las solicitudes GET al Servlet. No se realiza ninguna
@@ -62,22 +63,22 @@ public class ServletAdmin extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// Obtener los datos del formulario
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
+	    // Obtener los datos del formulario
+	    String username = req.getParameter("username");
+	    String password = req.getParameter("password");
 
-		// Verificar las credenciales del administrador
-		if (ADMIN_USERNAME.equals(username) && ADMIN_PASSWORD.equals(password)) {
-			resp.sendRedirect("administrador.html");
-		} else {
-			// Si las credenciales son incorrectas, mostrar una alerta y redirigir al
-			// usuario de vuelta al formulario de inicio de sesión
-			resp.setContentType("text/html");
-			PrintWriter out = resp.getWriter();
-			out.println("<html><body onload=\"showLoginError()\">  <h1>ERROR</h1> </body></html>");
-			resp.setHeader("Refresh", "5; URL=login.jsp");
+	    // Verificar las credenciales del vendedor
+	    if (VEND_USERNAME.equals(username) && VEND_PASSWORD.equals(password)) {
+	    	resp.sendRedirect("vendedor.html");
+	    } else {
+	        // Si las credenciales son incorrectas, mostrar una alerta y redirigir al usuario de vuelta al formulario de inicio de sesión
+	        resp.setContentType("text/html");
+	        PrintWriter out = resp.getWriter();
+	        out.println("<html><body onload=\"showLoginError()\">  <h1>ERROR</h1> </body></html>");
+	        resp.setHeader("Refresh", "5; URL=login.jsp");
 
-			out.close();
-		}
+	        out.close();
+	    }
 	}
+
 }

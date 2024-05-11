@@ -19,7 +19,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<span class="navbar-text">Vendedor</span>
+							<span class="navbar-text">Administrador</span>
 						</li>
 					</ul>
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -37,7 +37,7 @@
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-body text-center">
-						<h5 class="card-title">Venta</h5>
+						<h5 class="card-title">Inventario</h5>
 						<!-- Bot�n para registrar -->
 						<button type="button" class="btn btn-success" id="btnRegistrar">Registrar</button>
 					</div>
@@ -47,14 +47,23 @@
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-body text-center">
-						<h5 class="card-title">Arqueo</h5>
+						<h5 class="card-title">Proveedor</h5>
 						<!-- Bot�n para arqueo -->
 						<button type="button" class="btn btn-success" id="btnArqueo">Arqueo</button>
 					</div>
 				</div>
 			</div>
 			<!-- Bot�n para Crear Cliente -->
-
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						<h5 class="card-title">Cliente</h5>
+						<!-- Bot�n para crear cliente -->
+						<button type="button" class="btn btn-primary" id="btnCrearCliente">Crear</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Formulario de venta (inicialmente oculto) -->
 		<div class="row mt-3" id="formularioVenta" style="display: none;">
@@ -69,11 +78,52 @@
 			</div>
 		</div>
 
-	
+		<!-- Formulario de cliente (inicialmente oculto) -->
+		<div class="row mt-3" id="formularioCliente" style="display: none;">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body text-center"> <!-- A�adida la clase text-center -->
+						<h5 class="card-title">Formulario de Cliente</h5>
+						<!DOCTYPE html>
+
+						<div class="container">
+							<div class="row justify-content-center">
+								<div class="col-md-6">
+									<div class="card shadow">
+										<div class="card-body">
+											<h2 class="card-title text-center mb-4">Formulario de Cliente</h2>
+											<form id="clienteForm">
+												<div class="form-group">
+													<label for="nombre">Nombre:</label>
+													<input type="text" id="nombre" name="nombre" class="form-control"
+														required>
+												</div>
+												<div class="form-group">
+													<label for="direccion">Direcci�n:</label>
+													<input type="text" id="direccion" name="direccion"
+														class="form-control" required>
+												</div>
+												<div class="form-group">
+													<label for="telefonoC">Tel�fono:</label>
+													<input type="tel" id="telefonoC" name="telefonoC"
+														class="form-control" required>
+												</div>
+												<button type="submit" class="btn btn-primary btn-block">Enviar</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
 						<button type="button" class="btn btn-primary" id="btnAtrasCliente">Atr�s</button>
 					</div>
 				</div>
+			</div>
+		</div>
 
+	</div>
 
 	<!-- Footer -->
 	<footer class="footer">
