@@ -21,9 +21,9 @@ public class VentaDAO {
 		String query = "INSERT INTO Venta (id_cliente, total, metodo_pago, fecha) VALUES (?,?,?,?)";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
 			statement.setInt(1, idCliente);
-			statement.setInt(3, total);
-			statement.setString(5, metodo_pago);
-			statement.setDate(6, new java.sql.Date(date.getTime()));
+			statement.setInt(2, total);
+			statement.setString(3, metodo_pago);
+			statement.setDate(4, new java.sql.Date(date.getTime()));
 			statement.executeUpdate();
 			System.out.println("Producto agregado correctamente.");
 		} catch (SQLException e) {
@@ -58,6 +58,20 @@ public class VentaDAO {
 			e.printStackTrace();
 		}
 		return ventas;
+	}
+
+	public int obtenerMaximoIdVenta() {
+	    int maxIdVenta = 0;
+	    String query = "SELECT MAX(id_venta) AS max_id_venta FROM Venta";
+	    try (PreparedStatement statement = conexion.prepareStatement(query);
+	         ResultSet resultSet = statement.executeQuery()) {
+	        if (resultSet.next()) {
+	            maxIdVenta = resultSet.getInt("max_id_venta");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return maxIdVenta;
 	}
 
 	// Actualizar producto

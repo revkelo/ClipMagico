@@ -6,6 +6,7 @@ import com.dakin.model.BdSql;
 import com.dakin.model.ClienteDAO;
 import com.dakin.model.ClienteDTO;
 import com.dakin.model.ProductoDAO;
+import com.dakin.model.Productos_ventaDAO;
 import com.dakin.model.ProveedorDAO;
 import com.dakin.model.VentaDAO;
 
@@ -16,11 +17,16 @@ public class AplMain {
 		
 		ProductoDAO pro = new ProductoDAO(db);
 		ProveedorDAO provee = new ProveedorDAO(db);
-		VentaDAO ven = new VentaDAO(db);
 		
-		ven.agregarVenta(1, 100, "Efectivo");
+		Productos_ventaDAO prod = new Productos_ventaDAO(db);
+		VentaDAO ven = new VentaDAO(db);
+//		prod.agregarProductoVenta(ven.obtenerMaximoIdVenta(), 2, 1);
+		
+//		
+//		ven.agregarVenta(1, 100, "Efectivo");
 		ven.agregarVenta(2, 300, "Efectivo");
 
+		
 
 //	    db.createTables();
 
