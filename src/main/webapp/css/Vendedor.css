@@ -1,0 +1,97 @@
+/* Estilos personalizados para la página */
+
+/* Estilos para los botones */
+.btn {
+    transition: all 0.3s ease;
+}
+
+  body {
+            background-color: #24D0FF; /* Color de fondo más claro */
+        }
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Estilos para los formularios */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+/* Estilos para el footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+}
+
+/* Estilos adicionales para mejorar la apariencia */
+.container {
+    margin-top: 2rem;
+}
+
+.row {
+    justify-content: center;
+}
+
+/* Estilos para los botones de color */
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+/* Estilos para los botones flotantes */
+.btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-floating:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el botón flotante de volver arriba */
+#btnVolverArriba {
+    background-color: #007bff;
+}
