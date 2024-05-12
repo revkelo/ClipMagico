@@ -16,14 +16,12 @@ public class VentaDAO {
 	}
 
 	// Agregar producto
-	public void agregarVenta(int idCliente, int idProducto, int total, int cantidad, String metodo_pago) {
+	public void agregarVenta(int idCliente, int total, String metodo_pago) {
 		Date date = new Date();
-		String query = "INSERT INTO Venta (id_cliente, id_producto, total, cantidad, metodo_pago, fecha) VALUES (?, ?, ?,?,?,?)";
+		String query = "INSERT INTO Venta (id_cliente, total, metodo_pago, fecha) VALUES (?,?,?,?)";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
 			statement.setInt(1, idCliente);
-			statement.setInt(2, idProducto);
 			statement.setInt(3, total);
-			statement.setInt(4, cantidad);
 			statement.setString(5, metodo_pago);
 			statement.setDate(6, new java.sql.Date(date.getTime()));
 			statement.executeUpdate();
@@ -51,8 +49,8 @@ public class VentaDAO {
 		try (PreparedStatement statement = conexion.prepareStatement(query);
 				ResultSet resultSet = statement.executeQuery()) {
 			while (resultSet.next()) {
-				VentaDTO venta = new VentaDTO(resultSet.getInt("id_venta"), resultSet.getInt("id_cliente"),
-						resultSet.getInt("id_producto"), resultSet.getInt("total"), resultSet.getInt("cantidad"),
+				VentaDTO venta = new VentaDTO(resultSet.getInt("id_venta"), resultSet.getInt("id_cliente")
+						, resultSet.getInt("total"),
 						resultSet.getString("metodo_pago"), resultSet.getDate("fecha"));
 				ventas.add(venta);
 			}
@@ -63,13 +61,11 @@ public class VentaDAO {
 	}
 
 	// Actualizar producto
-	public void actualizarProducto(int idCliente, int idProducto, int total, int cantidad, String metodo_pago) {
-		String query = "UPDATE Venta SET id_cliente = ?, id_producto = ?, total = ?, cantidad = ?, metodo_pago = ? WHERE id_producto = ?";
+	public void actualizarProducto(int idCliente, int total, String metodo_pago) {
+		String query = "UPDATE Venta SET id_cliente = ?, total = ?, metodo_pago = ? WHERE id_producto = ?";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
 			statement.setInt(1, idCliente);
-			statement.setInt(2, idProducto);
 			statement.setInt(3, total);
-			statement.setInt(4, cantidad);
 			statement.setString(5, metodo_pago);
 			statement.executeUpdate();
 			System.out.println("Producto actualizado correctamente.");

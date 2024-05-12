@@ -6,9 +6,7 @@ public class VentaDTO {
 	// Atributos
 	private int idVenta;
 	private int idCliente;
-	private int idProducto;
 	private int total;
-	private int cantidad;
 	private String metodo_pago;
 	private Date fecha;
 	
@@ -17,12 +15,10 @@ public class VentaDTO {
 	}
 
 	// Constructor
-	public VentaDTO(int idVenta, int idCliente, int idProducto, int total, int cantidad ,String metodo_pago ,Date fecha) {
+	public VentaDTO(int idVenta, int idCliente, int total,String metodo_pago ,Date fecha) {
 		this.idVenta = idVenta;
 		this.idCliente = idCliente;
-		this.idProducto = idProducto;
-		this.total = total;
-		this.cantidad = cantidad;
+		this.total = total;	
 		this.metodo_pago = metodo_pago;
 		this.fecha = fecha;
 	}
@@ -43,28 +39,12 @@ public class VentaDTO {
 		this.idCliente = idCliente;
 	}
 
-	public int getIdProducto() {
-		return idProducto;
-	}
-
-	public void setIdProducto(int idProducto) {
-		this.idProducto = idProducto;
-	}
-
 	public int getTotal() {
 		return total;
 	}
 
 	public void setTotal(int total) {
 		this.total = total;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
 	}
 
 	public String getMetodo_pago() {

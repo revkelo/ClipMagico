@@ -18,7 +18,8 @@ public class AplMain {
 		ProveedorDAO provee = new ProveedorDAO(db);
 		VentaDAO ven = new VentaDAO(db);
 		
-		ven.agregarVenta(1, 1, 100, 2, "Efectivo");
+		ven.agregarVenta(1, 100, "Efectivo");
+		ven.agregarVenta(2, 300, "Efectivo");
 
 
 //	    db.createTables();

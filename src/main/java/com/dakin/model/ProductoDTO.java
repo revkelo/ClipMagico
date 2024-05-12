@@ -6,16 +6,17 @@ public class ProductoDTO {
     private String nombre;
     private String descripcion;
     private int idProveedor;
-
+    private int precio;
     public ProductoDTO() {
 		// TODO Auto-generated constructor stub
 	}
     // Constructor
-    public ProductoDTO(int idProducto, String nombre, String descripcion, int idProveedor) {
+    public ProductoDTO(int idProducto, String nombre, String descripcion, int idProveedor, int precio) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.idProveedor = idProveedor;
+        this.precio=precio;
     }
 	public int getIdProducto() {
 		return idProducto;
@@ -41,6 +42,12 @@ public class ProductoDTO {
 	public void setIdProveedor(int idProveedor) {
 		this.idProveedor = idProveedor;
 	}
-
+	public int getPrecio() {
+		return precio;
+	}
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+	
 
 }

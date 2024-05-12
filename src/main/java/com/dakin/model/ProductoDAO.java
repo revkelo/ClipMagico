@@ -15,12 +15,13 @@ public class ProductoDAO {
     }
 
     // Agregar producto
-    public void agregarProducto(String nombre, String descripcion, int idProveedor) {
-        String query = "INSERT INTO Producto (nombre, descripcion, id_proveedor) VALUES (?, ?, ?)";
+    public void agregarProducto(String nombre, String descripcion, int idProveedor, int precio) {
+        String query = "INSERT INTO Producto (nombre, descripcion, id_proveedor, precio) VALUES (?, ?, ?, ?)";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, nombre);
             statement.setString(2, descripcion);
             statement.setInt(3, idProveedor);
+            statement.setInt(4, precio);
             statement.executeUpdate();
             System.out.println("Producto agregado correctamente.");
         } catch (SQLException e) {
@@ -51,7 +52,8 @@ public class ProductoDAO {
                         resultSet.getInt("id_producto"),
                         resultSet.getString("nombre"),
                         resultSet.getString("descripcion"),
-                        resultSet.getInt("id_proveedor")
+                        resultSet.getInt("id_proveedor"),
+                        resultSet.getInt("precio")
                 );
                 productos.add(producto);
             }
@@ -63,13 +65,14 @@ public class ProductoDAO {
 
 
     // Actualizar producto
-    public void actualizarProducto(int idProducto, String nombre, String descripcion, int idProveedor) {
-        String query = "UPDATE Producto SET nombre = ?, descripcion = ?, id_proveedor = ? WHERE id_producto = ?";
+    public void actualizarProducto(int idProducto, String nombre, String descripcion, int idProveedor, int precio) {
+        String query = "UPDATE Producto SET nombre = ?, descripcion = ?, id_proveedor = ?, precio = ? WHERE id_producto = ?";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, nombre);
             statement.setString(2, descripcion);
             statement.setInt(3, idProveedor);
             statement.setInt(4, idProducto);
+            statement.setInt(5, precio);
             statement.executeUpdate();
             System.out.println("Producto actualizado correctamente.");
         } catch (SQLException e) {
