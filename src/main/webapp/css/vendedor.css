@@ -1,0 +1,115 @@
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #17a2b8; /* Color de fondo */
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important; /* Color del texto */
+}
+
+/* Estilos para los botones */
+.btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.btn-success {
+    background-color: #28a745; /* Color de fondo para botones de éxito */
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Color de fondo al pasar el ratón */
+    border-color: #1e7e34;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Color de fondo para botones primarios */
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+    border-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Color de fondo para botones secundarios */
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Color de fondo al pasar el ratón */
+    border-color: #545b62;
+}
+
+/* Estilos para las tarjetas */
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: #343a40; /* Color del título de la tarjeta */
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Estilos para la tabla de productos */
+#productTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#productTable th,
+#productTable td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+}
+
+#productTable th {
+    background-color: #f8f9fa; /* Color de fondo para encabezados de tabla */
+}
+
+/* Estilos para la suma total */
+#totalSum {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #343a40; /* Color del texto */
+}
+
+/* Estilos para el formulario de venta */
+.form-label {
+    font-weight: bold;
+    color: #343a40; /* Color del texto */
+}
+
+.form-control {
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid #ced4da;
+}
+
+.form-select {
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    color: #495057; /* Color del texto */
+}
+
+/* Estilos para el botón Obtener Precio */
+#getPriceBtn {
+    background-color: #ffc107; /* Color de fondo */
+    border-color: #ffc107;
+    color: #343a40; /* Color del texto */
+}
+
+#getPriceBtn:hover {
+    background-color: #e0a800; /* Color de fondo al pasar el ratón */
+    border-color: #d39e00;
+}

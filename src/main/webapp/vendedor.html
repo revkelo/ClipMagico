@@ -2,96 +2,57 @@
 <html lang="es">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi p谩gina con Bootstrap</title>
-<!-- Agregar enlaces a los estilos de Bootstrap -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Enlace al archivo de estilos CSS -->
-<link rel="stylesheet" href="./css/style.css">
-
-<style>
-.container {
-	max-width: 800px;
-	margin: 50px auto;
-	text-align: center;
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-bottom: 20px;
-}
-
-th, td {
-	padding: 10px;
-	border: 1px solid #ddd;
-}
-
-th {
-	background-color: #f2f2f2;
-}
-
-button {
-	padding: 10px 20px;
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	cursor: pointer;
-}
-</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mi P醙ina con Bootstrap</title>
+	<!-- Agregar enlaces a los estilos de Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Enlace al archivo de estilos CSS personalizado -->
+	<link rel="stylesheet" href="css/vendedor.css">
+	<!-- Enlace al archivo de Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-	<div class="container mt-3 text-center">
-		<!-- Barra de navegaci贸n -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container mt-3">
+		<!-- Barra de navegaci髇 -->
+		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="#">Vendedor</a>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Vendedor</a></li>
 					</ul>
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="login.jsp">Cerrar
-								sesi贸n</a></li>
+						<li class="nav-item"><a class="nav-link" href="login.jsp">Cerrar sesi髇</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
-		<!-- Contenido de la p谩gina -->
+		<!-- Contenido de la p醙ina -->
 		<div class="row mt-3" id="contenidoNormal">
-			<!-- Bot贸n para Registrar Venta -->
+			<!-- Botones para acciones -->
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-body text-center">
 						<h5 class="card-title">Venta</h5>
-						<!-- Bot贸n para registrar -->
 						<button type="button" class="btn btn-success" id="btnRegistrar">Registrar</button>
 					</div>
 				</div>
 			</div>
-			<!-- Bot贸n para Arqueo -->
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-body text-center">
 						<h5 class="card-title">Arqueo</h5>
-						<!-- Bot贸n para arqueo -->
 						<button type="button" class="btn btn-success" id="btnArqueo">Arqueo</button>
 					</div>
 				</div>
 			</div>
-			<!-- Bot贸n para Crear Cliente -->
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-body text-center">
 						<h5 class="card-title">Crear Cliente</h5>
-						<!-- Bot贸n para crear cliente -->
-						<button type="button" class="btn btn-success" id="btnCrearCliente">Crear
-							Cliente</button>
+						<button type="button" class="btn btn-success" id="btnCrearCliente">Crear Cliente</button>
 					</div>
 				</div>
 			</div>
@@ -103,216 +64,206 @@ button {
 				<div class="card">
 					<div class="card-body text-center">
 						<h5 class="card-title">Formulario de Venta</h5>
-						<!-- Aqu铆 puedes agregar el contenido del formulario de venta -->
 						<form id="ventaForm" method="post" action="/ClipMagico/venta">
 							<div id="productos">
 								<div class="mb-3">
-									<label for="idCliente" class="form-label">ID Cliente</label> <input
-										type="text" class="form-control" id="idCliente"
-										name="idCliente">
+									<label for="idCliente" class="form-label">ID Cliente</label>
+									<input type="text" class="form-control" id="idCliente" name="idCliente">
 								</div>
-
 								<div class="mb-3">
-									<label for="metodo_pago" class="form-label">M茅todo de
-										Pago</label> <select class="form-select" id="metodo_pago"
-										name="metodo_pago">
+									<label for="metodo_pago" class="form-label">M閠odo de Pago</label>
+									<select class="form-select" id="metodo_pago" name="metodo_pago">
 										<option value="efectivo">Efectivo</option>
-										<option value="tarjeta">Tarjeta de cr茅dito</option>
-										<option value="transferencia">Transferencia bancaria</option>
+										<option value="tarjeta">Tarjeta de Cr閐ito</option>
+										<option value="transferencia">Transferencia Bancaria</option>
 									</select>
 								</div>
-
 								<div class="mb-3">
-									<label for="idProducto1" class="form-label">ID Producto</label>
+									<label for="productId" class="form-label">ID Producto</label>
 									<input type="text" class="form-control" id="productId">
-									<label for="cantidadProducto1" class="form-label">Cantidad</label>
+								</div>
+								<div class="mb-3">
+									<label for="quantity" class="form-label">Cantidad</label>
 									<input type="number" class="form-control" id="quantity">
 								</div>
 							</div>
-
-							<div class="mb-3">
-
-
-								<div class="container">
-									<button id="getPriceBtn">Obtener Precio</button>
-									<table id="productTable">
+							<div class="container">
+								<button id="getPriceBtn">Obtener Precio</button>
+								<table id="productTable">
+									<thead>
 										<tr>
 											<th></th>
 											<th>ID Producto</th>
 											<th>Nombre</th>
-											<th>Descripci贸n</th>
+											<th>Descripci髇</th>
 											<th>ID Proveedor</th>
 											<th>Precio</th>
 											<th>Cantidad</th>
 											<th>Total</th>
 										</tr>
-									</table>
-									<h1 id="totalSum">Suma Total: $0</h1>
-								</div>
-
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<h1 id="totalSum">Suma Total: $0</h1>
 							</div>
-
-							<input type="hidden" name="idProducto[]"> <input
-								type="hidden" name="cantidadProducto[]"> <input
-								type="hidden" name="totalVenta" id="totalVenta">
-
-							<button type="button" class="btn btn-primary" id="submitBtn">Registrar
-								Venta</button>
-							<button type="button" class="btn btn-secondary"
-								id="btnAtrasVenta">Atr谩s</button>
+							<input type="hidden" name="idProducto[]">
+							<input type="hidden" name="cantidadProducto[]">
+							<input type="hidden" name="totalVenta" id="totalVenta">
+							<button type="button" class="btn btn-primary" id="submitBtn">Registrar Venta</button>
+							<button type="button" class="btn btn-secondary" id="btnAtrasVenta">Atr醩</button>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Agregar el script de Bootstrap y JavaScript -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Enlace al archivo de scripts JavaScript -->
 	<!-- Enlace al archivo de scripts JavaScript -->
 	<script>
 		$(document)
-				.ready(
-						function() {
-							// Mostrar el formulario de venta cuando se hace clic en el bot贸n Registrar
-							$("#btnRegistrar").click(function() {
-								$("#formularioVenta").show();
-								$("#contenidoNormal").hide();
+			.ready(
+				function () {
+					// Mostrar el formulario de venta cuando se hace clic en el bot贸n Registrar
+					$("#btnRegistrar").click(function () {
+						$("#formularioVenta").show();
+						$("#contenidoNormal").hide();
+					});
+
+					// Regresar al contenido normal cuando se hace clic en el bot贸n Atr谩s en el formulario de venta
+					$("#btnAtrasVenta").click(function () {
+						$("#formularioVenta").hide();
+						$("#contenidoNormal").show();
+					});
+
+					// Contador para los campos de productos
+					let contadorProductos = 1;
+
+					$('#getPriceBtn')
+						.click(
+							function (event) {
+								event.preventDefault(); // Prevent default form submission
+								var productId = $('#productId')
+									.val();
+								var quantity = $('#quantity')
+									.val();
+
+								// Send GET request to servlet
+								$
+									.get(
+										'http://localhost:8080/ClipMagico/prod?id='
+										+ productId,
+										function (data) {
+											// Show the price in an alert
+											alert('El precio del producto es: '
+												+ data.precio);
+
+											// Log the object to console
+											console
+												.log(data);
+
+											// Calculate total
+											var total = data.precio
+												* quantity;
+
+											// Add row to the table with search result
+											addRowToTable(
+												data,
+												quantity,
+												total);
+
+											// Update total sum
+											updateTotalSum();
+
+											// Update hidden input fields
+											updateHiddenInputs();
+
+											$(
+												'#productId')
+												.val(
+													'');
+											$(
+												'#quantity')
+												.val(
+													'');
+										});
 							});
 
-							// Regresar al contenido normal cuando se hace clic en el bot贸n Atr谩s en el formulario de venta
-							$("#btnAtrasVenta").click(function() {
-								$("#formularioVenta").hide();
-								$("#contenidoNormal").show();
+					function addRowToTable(producto, quantity, total) {
+						var newRow = '<tr>';
+						newRow += '<td><button class="btn btn-danger btn-sm btnEliminar">Eliminar</button></td>'; // Bot贸n eliminar
+						newRow += '<td>' + producto.idProducto
+							+ '</td>';
+						newRow += '<td>' + producto.nombre + '</td>';
+						newRow += '<td>' + producto.descripcion
+							+ '</td>';
+						newRow += '<td>' + producto.idProveedor
+							+ '</td>';
+						newRow += '<td>' + producto.precio + '</td>';
+						newRow += '<td>' + quantity + '</td>';
+						newRow += '<td>' + total + '</td>';
+						newRow += '</tr>';
+
+						$('#productTable').append(newRow);
+					}
+
+					$(document).on('click', '.btnEliminar', function () {
+						$(this).closest('tr').remove(); // Eliminar la fila actual
+						updateTotalSum(); // Actualizar la suma total
+						updateHiddenInputs(); // Actualizar los campos de entrada ocultos
+					});
+
+					function updateTotalSum() {
+						var totalSum = 0;
+						$('#productTable tbody tr')
+							.each(
+								function () {
+									var totalCell = $(this)
+										.find('td:last')
+										.text();
+									var totalValue = parseFloat(totalCell);
+									if (!isNaN(totalValue)) { // Check if it's a valid number
+										totalSum += totalValue;
+									}
+								});
+						$('#totalSum').text(
+							'Suma Total: $' + totalSum.toFixed(0));
+						$('#totalVenta').val(totalSum.toFixed(0)); // Update the hidden input field for total amount
+					}
+
+					function updateHiddenInputs() {
+						var idProductos = [];
+						var cantidadesProductos = [];
+
+						$('#productTable tbody tr').each(
+							function () {
+								var idProducto = $(this).find('td:eq(1)').text();
+								var cantidadProducto = $(this).find('td:eq(6)').text();
+
+								idProductos.push(idProducto);
+								cantidadesProductos.push(cantidadProducto);
 							});
 
-							// Contador para los campos de productos
-							let contadorProductos = 1;
+						// Eliminar el primer elemento (que est谩 vac铆o) y luego unir los elementos con una coma
+						idProductos.shift();
+						cantidadesProductos.shift();
 
-							$('#getPriceBtn')
-									.click(
-											function(event) {
-												event.preventDefault(); // Prevent default form submission
-												var productId = $('#productId')
-														.val();
-												var quantity = $('#quantity')
-														.val();
-
-												// Send GET request to servlet
-												$
-														.get(
-																'http://localhost:8080/ClipMagico/prod?id='
-																		+ productId,
-																function(data) {
-																	// Show the price in an alert
-																	alert('El precio del producto es: '
-																			+ data.precio);
-
-																	// Log the object to console
-																	console
-																			.log(data);
-
-																	// Calculate total
-																	var total = data.precio
-																			* quantity;
-
-																	// Add row to the table with search result
-																	addRowToTable(
-																			data,
-																			quantity,
-																			total);
-
-																	// Update total sum
-																	updateTotalSum();
-
-																	// Update hidden input fields
-																	updateHiddenInputs();
-
-																	$(
-																			'#productId')
-																			.val(
-																					'');
-																	$(
-																			'#quantity')
-																			.val(
-																					'');
-																});
-											});
-
-							function addRowToTable(producto, quantity, total) {
-								var newRow = '<tr>';
-								newRow += '<td><button class="btn btn-danger btn-sm btnEliminar">Eliminar</button></td>'; // Bot贸n eliminar
-								newRow += '<td>' + producto.idProducto
-										+ '</td>';
-								newRow += '<td>' + producto.nombre + '</td>';
-								newRow += '<td>' + producto.descripcion
-										+ '</td>';
-								newRow += '<td>' + producto.idProveedor
-										+ '</td>';
-								newRow += '<td>' + producto.precio + '</td>';
-								newRow += '<td>' + quantity + '</td>';
-								newRow += '<td>' + total + '</td>';
-								newRow += '</tr>';
-
-								$('#productTable').append(newRow);
-							}
-
-							$(document).on('click', '.btnEliminar', function() {
-								$(this).closest('tr').remove(); // Eliminar la fila actual
-								updateTotalSum(); // Actualizar la suma total
-								updateHiddenInputs(); // Actualizar los campos de entrada ocultos
-							});
-
-							function updateTotalSum() {
-								var totalSum = 0;
-								$('#productTable tbody tr')
-										.each(
-												function() {
-													var totalCell = $(this)
-															.find('td:last')
-															.text();
-													var totalValue = parseFloat(totalCell);
-													if (!isNaN(totalValue)) { // Check if it's a valid number
-														totalSum += totalValue;
-													}
-												});
-								$('#totalSum').text(
-										'Suma Total: $' + totalSum.toFixed(0));
-								$('#totalVenta').val(totalSum.toFixed(0)); // Update the hidden input field for total amount
-							}
-
-							function updateHiddenInputs() {
-							    var idProductos = [];
-							    var cantidadesProductos = [];
-
-							    $('#productTable tbody tr').each(
-							        function () {
-							            var idProducto = $(this).find('td:eq(1)').text();
-							            var cantidadProducto = $(this).find('td:eq(6)').text();
-
-							            idProductos.push(idProducto);
-							            cantidadesProductos.push(cantidadProducto);
-							        });
-
-							    // Eliminar el primer elemento (que est谩 vac铆o) y luego unir los elementos con una coma
-							    idProductos.shift();
-							    cantidadesProductos.shift();
-
-							    $('input[name="idProducto[]"]').val(idProductos.join(','));
-							    $('input[name="cantidadProducto[]"]').val(cantidadesProductos.join(','));
-							}
+						$('input[name="idProducto[]"]').val(idProductos.join(','));
+						$('input[name="cantidadProducto[]"]').val(cantidadesProductos.join(','));
+					}
 
 
-							// Submit the form with updated hidden input fields when registering the sale
-							$('#submitBtn').click(function() {
-								updateTotalSum();
-								updateHiddenInputs();
-								$('#ventaForm').submit();
-							});
-						});
+					// Submit the form with updated hidden input fields when registering the sale
+					$('#submitBtn').click(function () {
+						updateTotalSum();
+						updateHiddenInputs();
+						$('#ventaForm').submit();
+					});
+				});
 	</script>
 
 </body>
