@@ -35,7 +35,7 @@ public class ServletVenta extends HttpServlet {
 		String total = req.getParameter("total");
 		String metodo_pago = req.getParameter("metodo_pago");
 
-		venta.agregarVenta(Integer.parseInt(idcliente), Integer.parseInt(total), metodo_pago);
+		venta.agregarVenta(Integer.parseInt(idcliente), metodo_pago);
 
 		for (int i = 0; i < cantidadProductos.length; i++) {
 			System.out.println("id producto: " + idproductos[i] + " Cantidad: " + cantidadProductos[i]);

@@ -16,14 +16,13 @@ public class VentaDAO {
 	}
 
 	// Agregar producto
-	public void agregarVenta(int idCliente, int total, String metodo_pago) {
+	public void agregarVenta(int idCliente, String metodo_pago) {
 		Date date = new Date();
-		String query = "INSERT INTO Venta (id_cliente, total, metodo_pago, fecha) VALUES (?,?,?,?)";
+		String query = "INSERT INTO Venta (id_cliente, metodo_pago, fecha) VALUES (?,?,?)";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
 			statement.setInt(1, idCliente);
-			statement.setInt(2, total);
-			statement.setString(3, metodo_pago);
-			statement.setDate(4, new java.sql.Date(date.getTime()));
+			statement.setString(2, metodo_pago);
+			statement.setDate(3, new java.sql.Date(date.getTime()));
 			statement.executeUpdate();
 			System.out.println("Producto agregado correctamente.");
 		} catch (SQLException e) {
@@ -49,8 +48,7 @@ public class VentaDAO {
 		try (PreparedStatement statement = conexion.prepareStatement(query);
 				ResultSet resultSet = statement.executeQuery()) {
 			while (resultSet.next()) {
-				VentaDTO venta = new VentaDTO(resultSet.getInt("id_venta"), resultSet.getInt("id_cliente")
-						, resultSet.getInt("total"),
+				VentaDTO venta = new VentaDTO(resultSet.getInt("id_venta"), resultSet.getInt("id_cliente"),
 						resultSet.getString("metodo_pago"), resultSet.getDate("fecha"));
 				ventas.add(venta);
 			}
@@ -75,11 +73,10 @@ public class VentaDAO {
 	}
 
 	// Actualizar producto
-	public void actualizarProducto(int idCliente, int total, String metodo_pago) {
-		String query = "UPDATE Venta SET id_cliente = ?, total = ?, metodo_pago = ? WHERE id_producto = ?";
+	public void actualizarProducto(int idCliente, String metodo_pago) {
+		String query = "UPDATE Venta SET id_cliente = ?, metodo_pago = ? WHERE id_producto = ?";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
 			statement.setInt(1, idCliente);
-			statement.setInt(3, total);
 			statement.setString(5, metodo_pago);
 			statement.executeUpdate();
 			System.out.println("Producto actualizado correctamente.");

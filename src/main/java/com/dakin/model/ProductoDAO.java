@@ -15,13 +15,14 @@ public class ProductoDAO {
     }
 
     // Agregar producto
-    public void agregarProducto(String nombre, String descripcion, int idProveedor, int precio) {
-        String query = "INSERT INTO Producto (nombre, descripcion, id_proveedor, precio) VALUES (?, ?, ?, ?)";
+    public void agregarProducto(String nombre, String descripcion, int idProveedor, int cantidad, int precio) {
+        String query = "INSERT INTO Producto (nombre, descripcion, id_proveedor,cantidad, precio) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, nombre);
             statement.setString(2, descripcion);
             statement.setInt(3, idProveedor);
-            statement.setInt(4, precio);
+            statement.setInt(4, cantidad);
+            statement.setInt(5, precio);
             statement.executeUpdate();
             System.out.println("Producto agregado correctamente.");
         } catch (SQLException e) {
@@ -40,7 +41,7 @@ public class ProductoDAO {
             e.printStackTrace();
         }
     }
-    
+
     public ProductoDTO obtenerProductoPorId(int idProducto) {
         ProductoDTO producto = null;
         String query = "SELECT * FROM Producto WHERE id_producto = ?";
@@ -53,6 +54,7 @@ public class ProductoDAO {
                             resultSet.getString("nombre"),
                             resultSet.getString("descripcion"),
                             resultSet.getInt("id_proveedor"),
+                            resultSet.getInt("cantidad"),
                             resultSet.getInt("precio")
                     );
                 }
@@ -75,6 +77,7 @@ public class ProductoDAO {
                         resultSet.getString("nombre"),
                         resultSet.getString("descripcion"),
                         resultSet.getInt("id_proveedor"),
+                        resultSet.getInt("cantidad"),
                         resultSet.getInt("precio")
                 );
                 productos.add(producto);
@@ -87,14 +90,15 @@ public class ProductoDAO {
 
 
     // Actualizar producto
-    public void actualizarProducto(int idProducto, String nombre, String descripcion, int idProveedor, int precio) {
-        String query = "UPDATE Producto SET nombre = ?, descripcion = ?, id_proveedor = ?, precio = ? WHERE id_producto = ?";
+    public void actualizarProducto(int idProducto, String nombre, String descripcion, int idProveedor, int cantidad, int precio) {
+        String query = "UPDATE Producto SET nombre = ?, descripcion = ?, id_proveedor = ?, cantidad = ?, precio = ? WHERE id_producto = ?";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, nombre);
             statement.setString(2, descripcion);
             statement.setInt(3, idProveedor);
             statement.setInt(4, idProducto);
-            statement.setInt(5, precio);
+            statement.setInt(5, cantidad);
+            statement.setInt(6, precio);
             statement.executeUpdate();
             System.out.println("Producto actualizado correctamente.");
         } catch (SQLException e) {

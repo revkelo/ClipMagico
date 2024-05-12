@@ -24,7 +24,7 @@ public class AplMain {
 		
 //		
 //		ven.agregarVenta(1, 100, "Efectivo");
-		ven.agregarVenta(2, 300, "Efectivo");
+		ven.agregarVenta(2, "Efectivo");
 
 		
 

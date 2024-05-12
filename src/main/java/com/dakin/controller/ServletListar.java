@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import com.dakin.model.BdSql;
 import com.dakin.model.ClienteDAO;
 import com.dakin.model.ClienteDTO;
+import com.dakin.model.FacturaDAO;
+import com.dakin.model.FacturaDTO;
 import com.dakin.model.ProductoDAO;
 import com.dakin.model.ProductoDTO;
 import com.dakin.model.Productos_ventaDAO;
@@ -180,7 +182,6 @@ public class ServletListar extends HttpServlet {
 			salida.println("<tr>");
 			salida.println("<th>ID Venta</th>");
 			salida.println("<th>ID Cliente</th>");
-			salida.println("<th>Total</th>");
 			salida.println("<th>Método de Pago</th>");
 			salida.println("<th>Fecha</th>");
 			salida.println("</tr>");
@@ -191,7 +192,6 @@ public class ServletListar extends HttpServlet {
 				salida.println("<tr>");
 				salida.println("<td>" + venta.getIdVenta() + "</td>");
 				salida.println("<td>" + venta.getIdCliente() + "</td>");
-				salida.println("<td>" + venta.getTotal() + "</td>");
 				salida.println("<td>" + venta.getMetodo_pago() + "</td>");
 				salida.println("<td>" + venta.getFecha() + "</td>");
 				salida.println("</tr>");
@@ -207,7 +207,7 @@ public class ServletListar extends HttpServlet {
 		} else if (mostrar.equals("producto_venta")) {
 
 			Productos_ventaDAO pv = new Productos_ventaDAO(db);
-			ArrayList<Productos_ventaDTO> listaProductos = pv.mostrarProductoVenta(); // Método para obtener productos
+			ArrayList<Productos_ventaDTO> listaProductosv = pv.mostrarProductoVenta(); // Método para obtener productos
 																			// de la base de datos
 
 			salida.println("<!DOCTYPE html>");
@@ -231,7 +231,7 @@ public class ServletListar extends HttpServlet {
 			salida.println("</thead>");
 			salida.println("<tbody>");
 
-			for (Productos_ventaDTO producto : listaProductos) {
+			for (Productos_ventaDTO producto : listaProductosv) {
 				salida.println("<tr>");
 				salida.println("<td>" + producto.getIdVenta() + "</td>");
 				salida.println("<td>" + producto.getIdProducto() + "</td>");
@@ -270,6 +270,7 @@ public class ServletListar extends HttpServlet {
 			salida.println("<th>Nombre</th>");
 			salida.println("<th>Descripción</th>");
 			salida.println("<th>ID Proveedor</th>");
+			salida.println("<th>Cantidad</th>");
 			salida.println("<th>Precio</th>");
 			salida.println("</tr>");
 			salida.println("</thead>");
@@ -281,6 +282,7 @@ public class ServletListar extends HttpServlet {
 				salida.println("<td>" + producto.getNombre() + "</td>");
 				salida.println("<td>" + producto.getDescripcion() + "</td>");
 				salida.println("<td>" + producto.getIdProveedor() + "</td>");
+				salida.println("<td>" + producto.getCantidad() + "</td>");
 				salida.println("<td>" + producto.getPrecio() + "</td>");
 				salida.println("</tr>");
 			}
@@ -292,6 +294,50 @@ public class ServletListar extends HttpServlet {
 
 			salida.close();
 
+			
+		}else if (mostrar.equals("factura")) {
+
+				FacturaDAO fa = new FacturaDAO(db);
+				ArrayList<FacturaDTO> listafactura = fa.mostrarFacturas(); // Método para obtener productos
+																				// de la base de datos
+
+				salida.println("<!DOCTYPE html>");
+				salida.println("<html>");
+				salida.println("<head>");
+				salida.println("<meta charset=\"UTF-8\" />");
+				salida.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />");
+				salida.println("<title>Productos</title>");
+				salida.println(
+						"<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />");
+				salida.println("</head>");
+				salida.println("<body>");
+				salida.println("<h1 class=\"display-4\">Lista de Productos</h1>");
+				salida.println("<table class=\"table table-bordered border-primary\">");
+				salida.println("<thead>");
+				salida.println("<tr>");
+				salida.println("<th>ID Factura</th>");
+				salida.println("<th>ID Venta</th>");
+				salida.println("<th>Total</th>");
+
+				salida.println("</tr>");
+				salida.println("</thead>");
+				salida.println("<tbody>");
+
+				for (FacturaDTO facturas : listafactura) {
+					salida.println("<tr>");
+					salida.println("<td>" + facturas.getIdFactura() + "</td>");
+					salida.println("<td>" + facturas.getIdVenta() + "</td>");
+					salida.println("<td>" + facturas.getTotal() + "</td>");
+
+					salida.println("</tr>");
+				}
+
+				salida.println("</tbody>");
+				salida.println("</table>");
+				salida.println("</body>");
+				salida.println("</html>");
+
+				salida.close();
 		} else {
 
 

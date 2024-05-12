@@ -57,17 +57,4 @@ public class Productos_ventaDAO {
 		return productos_venta;
 	}
 
-	// Actualizar producto
-	public void actualizarProductoVenta(int idVenta, int idProducto, int cantidad) {
-		String query = "UPDATE producto_venta SET id_venta = ?, id_producto = ?, cantidad = ?, metodo_pago = ? WHERE id_venta = ?";
-		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idVenta);
-			statement.setInt(2, idProducto);
-			statement.setInt(3, cantidad);
-			statement.executeUpdate();
-			System.out.println("Producto_venta actualizado correctamente.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 }
