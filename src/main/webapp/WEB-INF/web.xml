@@ -10,6 +10,11 @@
 		<servlet-class>com.dakin.controller.ServletAdmin</servlet-class>
 	</servlet>
 	
+		<servlet>
+		<servlet-name>ServletVenta</servlet-name>
+		<servlet-class>com.dakin.controller.ServletVenta</servlet-class>
+	</servlet>
+	
 	<servlet>
 		<servlet-name>ServletVendedor</servlet-name>
 		<servlet-class>com.dakin.controller.ServletVendedor</servlet-class>
@@ -26,6 +31,12 @@
 		<servlet-name>ServletListar</servlet-name>
 		<url-pattern>/listar</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ServletVenta</servlet-name>
+		<url-pattern>/venta</url-pattern>
+	</servlet-mapping>
+
 
 	<servlet-mapping>
 		<servlet-name>ServletAdmin</servlet-name>

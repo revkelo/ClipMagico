@@ -68,8 +68,8 @@ public class ServletListar extends HttpServlet {
 		if (mostrar.equals("cliente")) {
 
 			ClienteDAO cli = new ClienteDAO(db);
-			ArrayList<ClienteDTO> listaClientes = cli.mostrarClientes(); // Método para obtener clientes de la base de
-																			// datos
+			ArrayList<ClienteDTO> listaClientes = cli.mostrarClientes(); 
+																			
 
 			salida.println("<!DOCTYPE html>");
 			salida.println("<html>");
