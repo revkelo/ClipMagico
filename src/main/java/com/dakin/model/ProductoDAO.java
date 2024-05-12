@@ -40,6 +40,28 @@ public class ProductoDAO {
             e.printStackTrace();
         }
     }
+    
+    public ProductoDTO obtenerProductoPorId(int idProducto) {
+        ProductoDTO producto = null;
+        String query = "SELECT * FROM Producto WHERE id_producto = ?";
+        try (PreparedStatement statement = conexion.prepareStatement(query)) {
+            statement.setInt(1, idProducto);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    producto = new ProductoDTO(
+                            resultSet.getInt("id_producto"),
+                            resultSet.getString("nombre"),
+                            resultSet.getString("descripcion"),
+                            resultSet.getInt("id_proveedor"),
+                            resultSet.getInt("precio")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return producto;
+    }
 
     // Mostrar producto
     public ArrayList<ProductoDTO> mostrarProductos() {
