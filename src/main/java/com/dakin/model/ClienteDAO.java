@@ -15,13 +15,14 @@ public class ClienteDAO {
 	}
 
 	// Agregar cliente
-	public void agregarCliente(String nombre, String direccion, String telefonoC) {
+	public void agregarCliente(String nombre, int cedula, String direccion, String telefonoC) {
 
-		String query = "INSERT INTO Cliente (nombre, direccion, telefonoC) VALUES (?, ?, ?)";
+		String query = "INSERT INTO Cliente (cedula, nombre, direccion, telefonoC) VALUES (?, ?, ?, ?)";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setString(1, nombre);
-			statement.setString(2, direccion);
-			statement.setString(3, telefonoC);
+			statement.setInt(1, cedula);
+			statement.setString(2, nombre);
+			statement.setString(3, direccion);
+			statement.setString(4, telefonoC);
 			statement.executeUpdate();
 			System.out.println("Cliente agregado correctamente.");
 		} catch (Exception e) {
@@ -31,11 +32,11 @@ public class ClienteDAO {
 	}
 
 	// Eliminar cliente
-	public void eliminarCliente(int idCliente) {
+	public void eliminarCliente(int cedula) {
 
-		String query = "DELETE FROM Cliente WHERE id_cliente = ?";
+		String query = "DELETE FROM Cliente WHERE cedula = ?";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idCliente);
+			statement.setInt(1, cedula);
 			statement.executeUpdate();
 			System.out.println("Cliente eliminado correctamente.");
 		} catch (Exception e) {
@@ -52,6 +53,7 @@ public class ClienteDAO {
 	         ResultSet resultSet = statement.executeQuery()) {
 	        while (resultSet.next()) {
 	            ClienteDTO cliente = new ClienteDTO(resultSet.getInt("id_cliente"),
+	                    resultSet.getInt("cedula"),
 	                    resultSet.getString("nombre"),
 	                    resultSet.getString("direccion"),
 	                    resultSet.getString("telefonoC"));
@@ -64,14 +66,15 @@ public class ClienteDAO {
 	}
 
 	// Actualizar cliente
-	public void actualizarCliente(int idCliente, String nombre, String direccion, String telefonoC) {
+	public void actualizarCliente(int cedula, String nombre, String direccion, String telefonoC) {
 
-		String query = "UPDATE Cliente SET nombre = ?, direccion = ?, telefonoC = ? WHERE id_cliente = ?";
+		String query = "UPDATE Cliente SET cedula = ?, nombre = ?, direccion = ?, telefonoC = ? WHERE cedula = ?";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setString(1, nombre);
-			statement.setString(2, direccion);
-			statement.setString(3, telefonoC);
-			statement.setInt(4, idCliente);
+			statement.setInt(1, cedula);
+			statement.setString(2, nombre);
+			statement.setString(3, direccion);
+			statement.setString(4, telefonoC);
+			
 			statement.executeUpdate();
 			System.out.println("Cliente actualizado correctamente.");
 

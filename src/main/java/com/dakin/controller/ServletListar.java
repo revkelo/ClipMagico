@@ -92,6 +92,7 @@ public class ServletListar extends HttpServlet {
 			salida.println("<tr>");
 			salida.println("<th>ID</th>");
 			salida.println("<th>Nombre</th>");
+			salida.println("<th>Cedula</th>");
 			salida.println("<th>Dirección</th>");
 			salida.println("<th>Teléfono</th>");
 			salida.println("</tr>");
@@ -102,6 +103,7 @@ public class ServletListar extends HttpServlet {
 				salida.println("<tr>");
 				salida.println("<td>" + cliente.getIdCliente() + "</td>");
 				salida.println("<td>" + cliente.getNombre() + "</td>");
+				salida.println("<td>" + cliente.getCedula() + "</td>");
 				salida.println("<td>" + cliente.getDireccion() + "</td>");
 				salida.println("<td>" + cliente.getTelefonoC() + "</td>");
 				salida.println("</tr>");
@@ -113,6 +115,8 @@ public class ServletListar extends HttpServlet {
 			salida.println("</html>");
 
 			salida.close();
+			
+			
 		} else if (mostrar.equals("proveedor")) {
 
 			ProveedorDAO proveedor1 = new ProveedorDAO(db);
