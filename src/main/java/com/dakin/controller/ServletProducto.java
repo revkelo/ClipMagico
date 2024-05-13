@@ -1,13 +1,12 @@
 package com.dakin.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 import com.dakin.model.BdSql;
 import com.dakin.model.ProductoDAO;
 import com.dakin.model.ProductoDTO;
-import com.dakin.model.Productos_ventaDAO;
-import com.dakin.model.VentaDAO;
+
 import com.google.gson.Gson;
 
 import jakarta.servlet.ServletException;
