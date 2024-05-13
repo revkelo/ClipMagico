@@ -2,207 +2,281 @@
 <html lang="es">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Mi Página con Bootstrap</title>
-	<!-- Agregar enlaces a los estilos de Bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Enlace al archivo de Font Awesome -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página con Bootstrap</title>
+    <!-- Agregar enlaces a los estilos de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlace al archivo de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="./css/vendedor.css">
 </head>
 
-<div class="container mt-3">
-	<!-- Barra de navegación -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container-fluid">
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#">Vendedor</a></li>
-				</ul>
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="login.jsp">Cerrar sesión</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<body>
 
-	<!-- Contenido de la página -->
-	<div class="row mt-3">
-		<!-- Botones para acciones -->
-		<div class="col-md-4">
-			<div class="card btn-container">
-				<div class="card-body text-center">
-					<i class="far fa-credit-card fa-3x mb-3" style="color: #4CAF50;"></i>
-					<h5 class="card-title">Venta</h5>
-					<button type="button" class="btn btn-success btn-lg" id="btnRegistrar">Registrar</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="card btn-container">
-				<div class="card-body text-center">
-					<i class="fas fa-credit-card fa-3x mb-3" style="color: #FFC107;"></i>
-					<h5 class="card-title">Arqueo</h5>
-					<button type="button" class="btn btn-success btn-lg" id="btnArqueo">Arqueo</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="card btn-container">
-				<div class="card-body text-center">
-					<i class="fas fa-user-plus fa-3x mb-3" style="color: #2196F3;"></i>
-					<h5 class="card-title">Crear Cliente</h5>
-					<button type="button" class="btn btn-success btn-lg" id="btnCrearCliente">Crear Cliente</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container mt-3">
+        <!-- Barra de navegación -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#">Vendedor</a></li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="login.jsp">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-	<!-- Formulario de venta (inicialmente oculto) -->
-	<div class="row mt-3" id="formularioVenta" style="display: none;">
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-body text-center">
-					<h5 class="card-title">Formulario de Venta</h5>
-					<form id="ventaForm" method="post" action="/ClipMagico/venta">
-						<div id="productos">
-							<div class="mb-3">
-								<label for="idCliente" class="form-label">ID Cliente</label>
-								<input type="text" class="form-control" id="idCliente" name="idCliente">
-							</div>
-							<div class="mb-3">
-								<label for="metodo_pago" class="form-label">Método de Pago</label>
-								<select class="form-select" id="metodo_pago" name="metodo_pago">
-									<option value="efectivo">Efectivo</option>
-									<option value="tarjeta">Tarjeta de Crédito</option>
-									<option value="transferencia">Transferencia Bancaria</option>
-								</select>
-							</div>
-							<div class="mb-3">
-								<label for="productId" class="form-label">ID Producto</label>
-								<input type="text" class="form-control" id="productId"  name="idProducto[]">
-							</div>
-							<div class="mb-3">
-								<label for="quantity" class="form-label">Cantidad</label>
-								<input type="number" class="form-control" id="quantity" name="cantidadProducto[]">
-							</div>
-						</div>
-						<div class="container">
-							<button type="button" class="btn btn-primary" id="getPriceBtn">Obtener Precio</button>
-							<table id="productTable" class="table mt-3">
-								<thead>
-									<tr>
-										<th>ID Producto</th>
-										<th>Nombre</th>
-										<th>Descripción</th>
-										<th>ID Proveedor</th>
-										<th>Precio</th>
-										<th>Cantidad</th>
-										<th>Total</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-								</tbody>
-							</table>
-							<h4 id="totalSum">Suma Total: $0</h4>
-						</div>
-						
-						<input type="hidden" name="totalVenta" id="totalVenta">
-						<button type="submit" class="btn btn-success" id="submitBtn">Registrar Venta</button>
-						<button type="button" class="btn btn-secondary" id="btnAtrasVenta">Atrás</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+        <!-- Contenido de la página -->
+        <div class="row mt-3">
+            <!-- Botones para acciones -->
+            <div class="col-md-4">
+                <div class="card btn-container">
+                    <div class="card-body text-center">
+                        <i class="far fa-credit-card fa-3x mb-3" style="color: #4CAF50;"></i>
+                        <h5 class="card-title">Venta</h5>
+                        <button type="button" class="btn btn-success btn-lg" id="btnRegistrar">Registrar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card btn-container">
+                    <div class="card-body text-center">
+                        <i class="fas fa-trash-alt fa-3x mb-3" style="color: #FFC107;"></i>
+                        <h5 class="card-title">Eliminar Cliente</h5>
+                        <button type="button" class="btn btn-success btn-lg" id="btnEliminarCliente">Eliminar Cliente</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card btn-container">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-plus fa-3x mb-3" style="color: #2196F3;"></i>
+                        <h5 class="card-title">Crear Cliente</h5>
+                        <button type="button" class="btn btn-success btn-lg" id="btnCrearCliente">Crear Cliente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- Agregar el script de Bootstrap y JavaScript -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Enlace al archivo de scripts JavaScript -->
-<script>
-	$(document).ready(function () {
-		// Mostrar el formulario de venta cuando se hace clic en el botón Registrar
-		$("#btnRegistrar").click(function () {
-			$("#formularioVenta").show();
-			$("#contenidoNormal").hide();
-		});
+        <!-- Formulario de venta (inicialmente oculto) -->
+        <div class="row mt-3" id="formularioVenta" style="display: none;">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Formulario de Venta</h5>
+                        <form id="ventaForm" method="post" action="/ClipMagico/venta">
+                            <div id="productos">
+                                <div class="mb-3">
+                                    <label for="idCliente" class="form-label">ID Cliente</label>
+                                    <input type="text" class="form-control" id="idCliente" name="idCliente">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="metodo_pago" class="form-label">Método de Pago</label>
+                                    <select class="form-select" id="metodo_pago" name="metodo_pago">
+                                        <option value="efectivo">Efectivo</option>
+                                        <option value="tarjeta">Tarjeta de Crédito</option>
+                                        <option value="transferencia">Transferencia Bancaria</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productId" class="form-label">ID Producto</label>
+                                    <input type="text" class="form-control" id="productId" name="idProducto[]">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="quantity" class="form-label">Cantidad</label>
+                                    <input type="number" class="form-control" id="quantity" name="cantidadProducto[]">
+                                </div>
+                            </div>
+                            <div class="container">
+                                <button type="button" class="btn btn-primary" id="getPriceBtn">Obtener Precio</button>
+                                <table id="productTable" class="table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Producto</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>ID Proveedor</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Total</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <h4 id="totalSum">Suma Total: $0</h4>
+                            </div>
+                            <input type="hidden" name="totalVenta" id="totalVenta">
+                            <button type="submit" class="btn btn-success" id="submitBtn">Registrar Venta</button>
+                            <button type="button" class="btn btn-secondary" id="btnAtrasVenta">Atrás</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		// Regresar al contenido normal cuando se hace clic en el botón Atrás en el formulario de venta
-		$("#btnAtrasVenta").click(function () {
-			$("#formularioVenta").hide();
-			$("#contenidoNormal").show();
-		});
+        <!-- Formulario para eliminar cliente -->
+        <div class="row mt-3" id="formularioEliminarCliente" style="display: none;">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Eliminar Cliente</h5>
+                        <form id="eliminarClienteForm" method="post" action="/ClipMagico/eliminarCliente">
+                            <div class="mb-3">
+                                <label for="cedulaClienteEliminar" class="form-label">Cédula Cliente</label>
+                                <input type="text" class="form-control" id="cedulaClienteEliminar" name="cedulaClienteEliminar">
+                            </div>
+                            <button type="submit" class="btn btn-danger" id="submitEliminarCliente">Eliminar</button>
+                            <button type="button" class="btn btn-secondary" id="btnAtrasEliminarCliente">Atrás</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		// Contador para los campos de productos
-		let contadorProductos = 1;
+        <!-- Formulario para agregar cliente -->
+        <div class="row mt-3" id="formularioAgregarCliente" style="display: none;">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Agregar Cliente</h5>
+                        <form id="agregarClienteForm" method="post" action="/ClipMagico/agregarCliente">
+                            <div class="mb-3">
+                                <label for="cedulaClienteAgregar" class="form-label">Cédula Cliente</label>
+                                <input type="text" class="form-control" id="cedulaClienteAgregar" name="cedulaClienteAgregar">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombreClienteAgregar" class="form-label">Nombre Cliente</label>
+                                <input type="text" class="form-control" id="nombreClienteAgregar" name="nombreClienteAgregar">
+                            </div>
+                            <div class="mb-3">
+                                <label for="direccionClienteAgregar" class="form-label">Dirección Cliente</label>
+                                <input type="text" class="form-control" id="direccionClienteAgregar" name="direccionClienteAgregar">
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefonoClienteAgregar" class="form-label">Teléfono Cliente</label>
+                                <input type="text" class="form-control" id="telefonoClienteAgregar" name="telefonoClienteAgregar">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submitAgregarCliente">Agregar</button>
+                            <button type="button" class="btn btn-secondary" id="btnAtrasAgregarCliente">Atrás</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-		$('#getPriceBtn').click(function (event) {
-			event.preventDefault(); // Prevent default form submission
-			var productId = $('#productId').val();
-			var quantity = $('#quantity').val();
+    <!-- Agregar el script de Bootstrap y JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Enlace al archivo de scripts JavaScript -->
+    <script>
+        $(document).ready(function () {
+            // Mostrar el formulario de venta cuando se hace clic en el botón Registrar
+            $("#btnRegistrar").click(function () {
+                $("#formularioVenta").show();
+                $("#formularioEliminarCliente").hide();
+                $("#formularioAgregarCliente").hide();
+            });
 
-			// Send GET request to servlet
-			$.get('http://localhost:8080/ClipMagico/prod?id=' + productId, function (data) {
-				// Show the price in an alert
-				alert('El precio del producto es: ' + data.precio);
+            // Mostrar el formulario de eliminar cliente cuando se hace clic en el botón Eliminar Cliente
+            $("#btnEliminarCliente").click(function () {
+                $("#formularioVenta").hide();
+                $("#formularioEliminarCliente").show();
+                $("#formularioAgregarCliente").hide();
+            });
 
-				// Log the object to console
-				console.log(data);
+            // Mostrar el formulario de agregar cliente cuando se hace clic en el botón Crear Cliente
+            $("#btnCrearCliente").click(function () {
+                $("#formularioVenta").hide();
+                $("#formularioEliminarCliente").hide();
+                $("#formularioAgregarCliente").show();
+            });
 
-				// Calculate total
-				var total = data.precio * quantity;
+            // Regresar al contenido normal cuando se hace clic en el botón Atrás en el formulario de venta
+            $("#btnAtrasVenta").click(function () {
+                $("#formularioVenta").hide();
+            });
 
-				// Add row to the table with search result
-				addRowToTable(data, quantity, total);
+            // Regresar al contenido normal cuando se hace clic en el botón Atrás en el formulario de eliminar cliente
+            $("#btnAtrasEliminarCliente").click(function () {
+                $("#formularioEliminarCliente").hide();
+            });
 
-				// Update total sum
-				updateTotalSum();
+            // Regresar al contenido normal cuando se hace clic en el botón Atrás en el formulario de agregar cliente
+            $("#btnAtrasAgregarCliente").click(function () {
+                $("#formularioAgregarCliente").hide();
+            });
+        });
+        
+        
+            $('#getPriceBtn').click(function (event) {
+                event.preventDefault(); // Prevent default form submission
+                var productId = $('#productId').val();
+                var quantity = $('#quantity').val();
 
-				$('#productId').val('');
-				$('#quantity').val('');
-			});
-		});
+                // Send GET request to servlet
+                $.get('http://localhost:8080/ClipMagico/prod?id=' + productId, function (data) {
+                    // Show the price in an alert
+                    alert('El precio del producto es: ' + data.precio);
 
-		function addRowToTable(producto, quantity, total) {
-			var newRow = '<tr>';
-			newRow += '<td>' + producto.idProducto + '</td>';
-			newRow += '<td>' + producto.nombre + '</td>';
-			newRow += '<td>' + producto.descripcion + '</td>';
-			newRow += '<td>' + producto.idProveedor + '</td>';
-			newRow += '<td>' + producto.precio + '</td>';
-			newRow += '<td>' + quantity + '</td>';
-			newRow += '<td>' + total + '</td>';
-			newRow += '<td><button class="btn btn-danger btn-sm btnEliminar">Eliminar</button></td>'; // Botón eliminar
-			newRow += '</tr>';
+                    // Log the object to console
+                    console.log(data);
 
-			$('#productTable tbody').append(newRow);
-		}
+                    // Calculate total
+                    var total = data.precio * quantity;
 
-		$(document).on('click', '.btnEliminar', function () {
-			$(this).closest('tr').remove(); // Eliminar la fila actual
-			updateTotalSum(); // Actualizar la suma total
-		});
+                    // Add row to the table with search result
+                    addRowToTable(data, quantity, total);
 
-		function updateTotalSum() {
-			var totalSum = 0;
-			$('#productTable tbody tr').each(function () {
-				var totalCell = $(this).find('td:nth-last-child(2)').text(); // Seleccionar la penúltima celda que contiene el total
-				var totalValue = parseFloat(totalCell);
-				if (!isNaN(totalValue)) { // Verificar si es un número válido
-					totalSum += totalValue;
-				}
-			});
-			$('#totalSum').text('Suma Total: $' + totalSum.toFixed(2));
-			$('#totalVenta').val(totalSum.toFixed(2)); // Actualizar el campo de entrada oculto para el monto total
-		}
+                    // Update total sum
+                    updateTotalSum();
 
+                    $('#productId').val('');
+                    $('#quantity').val('');
+                });
+            });
 
-	});
-</script>
+            function addRowToTable(producto, quantity, total) {
+                var newRow = '<tr>';
+                newRow += '<td>' + producto.idProducto + '</td>';
+                newRow += '<td>' + producto.nombre + '</td>';
+                newRow += '<td>' + producto.descripcion + '</td>';
+                newRow += '<td>' + producto.idProveedor + '</td>';
+                newRow += '<td>' + producto.precio + '</td>';
+                newRow += '<td>' + quantity + '</td>';
+                newRow += '<td>' + total + '</td>';
+                newRow += '<td><button class="btn btn-danger btn-sm btnEliminar">Eliminar</button></td>'; // Botón eliminar
+                newRow += '</tr>';
+
+                $('#productTable tbody').append(newRow);
+            }
+
+            $(document).on('click', '.btnEliminar', function () {
+                $(this).closest('tr').remove(); // Eliminar la fila actual
+                updateTotalSum(); // Actualizar la suma total
+            });
+
+            function updateTotalSum() {
+                var totalSum = 0;
+                $('#productTable tbody tr').each(function () {
+                    var totalCell = $(this).find('td:nth-last-child(2)').text(); // Seleccionar la penúltima celda que contiene el total
+                    var totalValue = parseFloat(totalCell);
+                    if (!isNaN(totalValue)) { // Verificar si es un número válido
+                        totalSum += totalValue;
+                    }
+                });
+                $('#totalSum').text('Suma Total: $' + totalSum.toFixed(2));
+                $('#totalVenta').val(totalSum.toFixed(2)); // Actualizar el campo de entrada oculto para el monto total
+            }
+
+        
+    </script>
 
 </body>
 
