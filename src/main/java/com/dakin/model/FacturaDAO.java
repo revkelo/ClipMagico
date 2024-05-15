@@ -16,11 +16,11 @@ public class FacturaDAO {
 	}
 
 	// Agregar producto
-	public void agregarFactura(int idVenta, int total) {
-		String query = "INSERT INTO Venta (id_venta, total) VALUES (?,?)";
+	public void agregarFactura(int total, int idVenta) {
+		String query = "INSERT INTO Venta (total, id_venta) VALUES (?,?)";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idVenta);
-			statement.setInt(2, total);
+			statement.setInt(1, total);
+			statement.setInt(2, idVenta);
 			statement.executeUpdate();
 			System.out.println("Factura agregada correctamente.");
 		} catch (SQLException e) {
