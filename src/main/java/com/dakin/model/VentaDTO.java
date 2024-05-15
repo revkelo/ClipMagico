@@ -1,24 +1,24 @@
 package com.dakin.model;
 
+import java.sql.Date;
+
 public class VentaDTO {
 	// Atributos
 	private int idVenta;
 	private int idCliente;
-	private int idProducto;
-	private int total;
-	private int cantidad;
-
+	private String metodo_pago;
+	private Date fecha;
+	
 	public VentaDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	// Constructor
-	public VentaDTO(int idVenta, int idCliente, int idProducto, int total, int cantidad) {
+	public VentaDTO(int idVenta, int idCliente,String metodo_pago ,Date fecha) {
 		this.idVenta = idVenta;
 		this.idCliente = idCliente;
-		this.idProducto = idProducto;
-		this.total = total;
-		this.cantidad = cantidad;
+		this.metodo_pago = metodo_pago;
+		this.fecha = fecha;
 	}
 
 	public int getIdVenta() {
@@ -37,28 +37,21 @@ public class VentaDTO {
 		this.idCliente = idCliente;
 	}
 
-	public int getIdProducto() {
-		return idProducto;
+
+	public String getMetodo_pago() {
+		return metodo_pago;
 	}
 
-	public void setIdProducto(int idProducto) {
-		this.idProducto = idProducto;
+	public void setMetodo_pago(String metodo_pago) {
+		this.metodo_pago = metodo_pago;
 	}
 
-	public int getTotal() {
-		return total;
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
+	
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ClienteDAO {
 
@@ -14,11 +15,11 @@ public class ClienteDAO {
 	}
 
 	// Agregar cliente
-	public void agregarCliente(int idCliente, String nombre, String direccion, String telefonoC) {
+	public void agregarCliente(String nombre, int cedula, String direccion, String telefonoC) {
 
-		String query = "INSERT INTO Cliente (id_cliente, nombre, direccion, telefonoC) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO Cliente (cedula, nombre, direccion, telefonoC) VALUES (?, ?, ?, ?)";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idCliente);
+			statement.setInt(1, cedula);
 			statement.setString(2, nombre);
 			statement.setString(3, direccion);
 			statement.setString(4, telefonoC);
@@ -31,11 +32,11 @@ public class ClienteDAO {
 	}
 
 	// Eliminar cliente
-	public void eliminarCliente(int idCliente) {
+	public void eliminarCliente(int cedula) {
 
-		String query = "DELETE FROM Cliente WHERE id_cliente = ?";
+		String query = "DELETE FROM Cliente WHERE cedula = ?";
 		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idCliente);
+			statement.setInt(1, cedula);
 			statement.executeUpdate();
 			System.out.println("Cliente eliminado correctamente.");
 		} catch (Exception e) {
@@ -44,39 +45,40 @@ public class ClienteDAO {
 
 	}
 
-	// Mostrar cliente
-	public ClienteDTO mostrarCliente(int idCliente) {
-		ClienteDTO cliente = null;
+	public ArrayList<ClienteDTO> mostrarClientes() {
+		ArrayList<ClienteDTO> clientes = new ArrayList<>();
 
-		String query = "SELECT * FROM Cliente WHERE id_cliente = ?";
-		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, idCliente);
-			try (ResultSet resultSet = statement.executeQuery()) {
-				if (resultSet.next()) {
-					cliente = new ClienteDTO(resultSet.getInt("id_cliente"), resultSet.getString("nombre"),
-							resultSet.getString("direccion"), resultSet.getString("telefonoC"));
-				}
+		String query = "SELECT * FROM Cliente";
+		try (PreparedStatement statement = conexion.prepareStatement(query);
+				ResultSet resultSet = statement.executeQuery()) {
+			while (resultSet.next()) {
+				ClienteDTO cliente = new ClienteDTO(resultSet.getInt("id_cliente"), resultSet.getInt("cedula"),
+						resultSet.getString("nombre"), resultSet.getString("direccion"),
+						resultSet.getString("telefonoC"));
+				clientes.add(cliente);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return cliente;
+		return clientes;
 	}
 
 	// Actualizar cliente
 	public void actualizarCliente(int idCliente, String nombre, String direccion, String telefonoC) {
+	 
+		String query = "UPDATE Cliente SET nombre = ?, direccion = ?, telefonoC = ? WHERE id_Cliente = ?";
+	    try (PreparedStatement statement = conexion.prepareStatement(query)) {
+	        statement.setString(1, nombre);
+	        statement.setString(2, direccion);
+	        statement.setString(3, telefonoC);
+	        statement.setInt(4, idCliente);
 
-		String query = "UPDATE Cliente SET nombre = ?, direccion = ?, telefonoC = ? WHERE id_cliente = ?";
-		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setString(1, nombre);
-			statement.setString(2, direccion);
-			statement.setString(3, telefonoC);
-			statement.setInt(4, idCliente);
-			statement.executeUpdate();
-			System.out.println("Cliente actualizado correctamente.");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	        statement.executeUpdate();
+	        System.out.println("Cliente actualizado correctamente.");
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
+
+
 }

@@ -1,18 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-	<display-name>formulario con servlets</display-name>
+	<display-name>ClipMagico</display-name>
 	<description>
-		Pagina parque diversiones
+		Pagina ClipMagico
 	</description>
 	<distributable></distributable>
 	<servlet>
 		<servlet-name>ServletAdmin</servlet-name>
 		<servlet-class>com.dakin.controller.ServletAdmin</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletCliente</servlet-name>
+		<servlet-class>com.dakin.controller.ServletCliente</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ServletProducto</servlet-name>
+		<servlet-class>com.dakin.controller.ServletProducto</servlet-class>
+	</servlet>
 	
+	<servlet>
+		<servlet-name>ServletProveedor</servlet-name>
+		<servlet-class>com.dakin.controller.ServletProveedor</servlet-class>
+	</servlet>
+
+
+	<servlet>
+		<servlet-name>ServletVenta</servlet-name>
+		<servlet-class>com.dakin.controller.ServletVenta</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ServletVendedor</servlet-name>
+		<servlet-class>com.dakin.controller.ServletVendedor</servlet-class>
+	</servlet>
+
+
+	<servlet>
+		<servlet-name>ServletListar</servlet-name>
+		<servlet-class>com.dakin.controller.ServletListar</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServletProducto</servlet-name>
+		<url-pattern>/prod</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServletProveedor</servlet-name>
+		<url-pattern>/prov</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServletCliente</servlet-name>
+		<url-pattern>/cliente</url-pattern>
+	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>ServletListar</servlet-name>
+		<url-pattern>/listar</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ServletVenta</servlet-name>
+		<url-pattern>/venta</url-pattern>
+	</servlet-mapping>
+
 
 	<servlet-mapping>
 		<servlet-name>ServletAdmin</servlet-name>
 		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ServletVendedor</servlet-name>
+		<url-pattern>/vendedor</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 </web-app>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Autenticación de administrador</title>
+<title>Login</title>
 
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -23,7 +23,32 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h2 class="text-center mb-4">Iniciar Sesión</h2>
+                    <h2 class="text-center mb-4">Iniciar Sesión - Vendedor</h2>
+                    <form method="post" action="/ClipMagico/vendedor">
+                        <div class="controls">
+                            <label for="username">Usuario:</label> <input type="text"
+                                class="form-control" id="username" name="username"
+                                placeholder="Ingrese su usuario">
+                        </div>
+                        <div class="controls">
+                            <label for="contraseña">Contraseña:</label> <input
+                                type="password" class="form-control" id="password"
+                                name="password" placeholder="Ingrese su contraseña">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-outline-success">Iniciar
+                            Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="form-register">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">Iniciar Sesión - Administrador</h2>
                     <form method="post" action="/ClipMagico/admin">
                         <div class="controls">
                             <label for="username">Usuario:</label> <input type="text"
@@ -43,5 +68,6 @@
             </div>
         </div>
     </section>
+    
 </body>
 </html>
