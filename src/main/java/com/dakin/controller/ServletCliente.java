@@ -1,6 +1,7 @@
 package com.dakin.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import com.dakin.model.BdSql;
 import com.dakin.model.ClienteDAO;
@@ -53,6 +54,27 @@ public class ServletCliente extends HttpServlet {
             String telefonoC = req.getParameter("telefonoClienteAgregar");
 
             cliente.agregarCliente(nombre, cedula, direccion, telefonoC);
+            
+    		resp.setContentType("text/html");
+			PrintWriter out = resp.getWriter();
+			out.println("<!DOCTYPE html>");
+			out.println("<html lang=\"es\">");
+			out.println("<head>");
+			out.println("<meta charset=\"UTF-8\">");
+			out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+			out.println("<title>Guardado</title>");
+			out.println(
+					"<link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<div class=\"container mt-5\">");
+			out.println("<h1 class=\"text-center text-success\">Guardado</h1>");
+			out.println("</div>");
+			out.println("</body>");
+			out.println("</html>");
+
+			out.close();
+            
         }
     }
 
@@ -73,6 +95,26 @@ public class ServletCliente extends HttpServlet {
 
         cliente.actualizarCliente(cedula, nombre, direccion, telefonoC);
         System.out.println("Actualizado");
+        
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE html>");
+		out.println("<html lang=\"es\">");
+		out.println("<head>");
+		out.println("<meta charset=\"UTF-8\">");
+		out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+		out.println("<title>Guardado</title>");
+		out.println(
+				"<link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<div class=\"container mt-5\">");
+		out.println("<h1 class=\"text-center text-success\">Actualizado</h1>");
+		out.println("</div>");
+		out.println("</body>");
+		out.println("</html>");
+
+		out.close();
     }
 
     @Override
@@ -86,6 +128,26 @@ public class ServletCliente extends HttpServlet {
         int cedula = Integer.parseInt(req.getParameter("cedula"));
 
         cliente.eliminarCliente(cedula);
+        
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+		out.println("<!DOCTYPE html>");
+		out.println("<html lang=\"es\">");
+		out.println("<head>");
+		out.println("<meta charset=\"UTF-8\">");
+		out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+		out.println("<title>Guardado</title>");
+		out.println(
+				"<link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<div class=\"container mt-5\">");
+		out.println("<h1 class=\"text-center text-success\">Eliminado</h1>");
+		out.println("</div>");
+		out.println("</body>");
+		out.println("</html>");
+
+		out.close();
     }
 
 }

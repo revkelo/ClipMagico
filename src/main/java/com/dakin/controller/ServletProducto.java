@@ -42,6 +42,7 @@ public class ServletProducto extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String method = req.getParameter("_method");
+		System.out.println(method);
 		if ("PUT".equals(method)) {
 			doPut(req, resp);
 		} else if ("DELETE".equals(method)) {
@@ -78,16 +79,34 @@ public class ServletProducto extends HttpServlet {
 		db.MySQLConnect();
 
 		ProductoDAO prod = new ProductoDAO(db);
-
+		int idprod = Integer.parseInt(req.getParameter("idProducto"));
 		String nombre = req.getParameter("nombreProdM");
 		String descripcion = req.getParameter("descripcionProdM");
 		int idprov = Integer.parseInt(req.getParameter("idproveedor"));
 		int cantidad = Integer.parseInt(req.getParameter("cantidadProdM"));
 		int precio = Integer.parseInt(req.getParameter("precioProdM"));
 
-		prod.actualizarProducto(idprov, nombre, descripcion, idprov, cantidad, precio);
+		prod.actualizarProducto(idprod, nombre, descripcion, idprov, cantidad, precio);
 
-		System.out.println("Actualizado");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE html>");
+		out.println("<html lang=\"es\">");
+		out.println("<head>");
+		out.println("<meta charset=\"UTF-8\">");
+		out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+		out.println("<title>Guardado</title>");
+		out.println(
+				"<link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<div class=\"container mt-5\">");
+		out.println("<h1 class=\"text-center text-success\">Actualizado</h1>");
+		out.println("</div>");
+		out.println("</body>");
+		out.println("</html>");
+
+		out.close();
 	}
 
 	@Override
@@ -133,7 +152,7 @@ public class ServletProducto extends HttpServlet {
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		System.out.println("ELIMINAR");
 		BdSql db = new BdSql();
 		db.MySQLConnect();
 
@@ -144,6 +163,9 @@ public class ServletProducto extends HttpServlet {
 		prod.eliminarProducto(idprov);
 
 		System.out.println(idprov);
+
+		resp.setStatus(HttpServletResponse.SC_ACCEPTED);
+		resp.getWriter().write("Eliminado");
 
 	}
 

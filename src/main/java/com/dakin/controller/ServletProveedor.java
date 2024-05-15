@@ -61,6 +61,26 @@ public class ServletProveedor extends HttpServlet {
 
 			prov.agregarProveedor(nombre, dirrecion, nit, telefono);
 
+			resp.setContentType("text/html");
+			PrintWriter out = resp.getWriter();
+			out.println("<!DOCTYPE html>");
+			out.println("<html lang=\"es\">");
+			out.println("<head>");
+			out.println("<meta charset=\"UTF-8\">");
+			out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+			out.println("<title>Guardado</title>");
+			out.println(
+					"<link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<div class=\"container mt-5\">");
+			out.println("<h1 class=\"text-center text-success\">Guardado</h1>");
+			out.println("</div>");
+			out.println("</body>");
+			out.println("</html>");
+
+			out.close();
+
 		}
 
 	}
@@ -82,6 +102,26 @@ public class ServletProveedor extends HttpServlet {
 
 		prov.actualizarProveedor(id, nombre, dirrecion, nit, telefono);
 		System.out.println("Actualizado");
+
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE html>");
+		out.println("<html lang=\"es\">");
+		out.println("<head>");
+		out.println("<meta charset=\"UTF-8\">");
+		out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+		out.println("<title>Guardado</title>");
+		out.println(
+				"<link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<div class=\"container mt-5\">");
+		out.println("<h1 class=\"text-center text-success\">Actualizado</h1>");
+		out.println("</div>");
+		out.println("</body>");
+		out.println("</html>");
+
+		out.close();
 	}
 
 	@Override
@@ -98,8 +138,11 @@ public class ServletProveedor extends HttpServlet {
 			int idprovee = Integer.parseInt(req.getParameter("idProveedor"));
 
 			prov.eliminarProveedor(idprovee);
+			resp.setStatus(HttpServletResponse.SC_ACCEPTED);
+			resp.getWriter().write("Eliminado");
 
 		} catch (Exception e) {
+			System.out.println("xd");
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			resp.getWriter().write("El proveedor que intenta eliminar se encuentra en uso");
 

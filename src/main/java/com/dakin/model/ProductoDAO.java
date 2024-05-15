@@ -96,9 +96,9 @@ public class ProductoDAO {
             statement.setString(1, nombre);
             statement.setString(2, descripcion);
             statement.setInt(3, idProveedor);
-            statement.setInt(4, idProducto);
-            statement.setInt(5, cantidad);
-            statement.setInt(6, precio);
+            statement.setInt(4, cantidad);
+            statement.setInt(5, precio);
+            statement.setInt(6, idProducto);
             statement.executeUpdate();
             System.out.println("Producto actualizado correctamente.");
         } catch (SQLException e) {
