@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.dakin.model.BdSql;
-import com.dakin.model.FacturaDAO;
 import com.dakin.model.Productos_ventaDAO;
 import com.dakin.model.VentaDAO;
 
@@ -25,7 +24,7 @@ public class ServletVenta extends HttpServlet {
 
 		Productos_ventaDAO prod = new Productos_ventaDAO(db);
 		VentaDAO venta = new VentaDAO(db);
-		FacturaDAO factura = new FacturaDAO(db);
+
 		// Obtener los valores de los parámetros
 		String idProductos = req.getParameter("idProducto[]");
 		String cantidadProductos = req.getParameter("cantidadProducto[]");
@@ -60,13 +59,6 @@ public class ServletVenta extends HttpServlet {
 			prod.agregarProductoVenta(idventa, Integer.parseInt(idProductosArray[i]),
 					Integer.parseInt(cantidadProductosArray[i]));
 		}
-		
-//		int total1 = Math.round(Integer.parseInt(total));
-//		System.out.println("totalbandera:" + total1);
-//		
-//		int idv = venta.obtenerMaximoIdVenta();
-//		
-//		factura.agregarFactura(total1,idv);
 		System.out.println("Guardado");
 
 		resp.setContentType("text/html");

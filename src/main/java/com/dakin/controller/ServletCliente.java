@@ -33,5 +33,19 @@ public class ServletCliente extends HttpServlet {
 	    cliente.agregarCliente(nombre,cedula ,direccion, telefonoC);
 
 	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		System.out.println("entroeliminar");
+		BdSql db = new BdSql();
+		db.MySQLConnect();
+		ClienteDAO cliente = new ClienteDAO(db);
+		
+		int cedula = Integer.parseInt(req.getParameter("cedula"));
+		
+		cliente.eliminarCliente(cedula);
+		
+	}
 
 }
