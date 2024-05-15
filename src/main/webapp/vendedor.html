@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Mi Página con Bootstrap</title>
+	<title>Vendedor</title>
 	<!-- Agregar enlaces a los estilos de Bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Enlace al archivo de Font Awesome -->
@@ -16,7 +16,7 @@
 <body>
 
 	<div class="container mt-3">
-		<!-- Barra de navegación -->
+		<!-- Barra de navegaciï¿½n -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,13 +24,13 @@
 						<li class="nav-item"><a class="nav-link" href="#">Vendedor</a></li>
 					</ul>
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="login.jsp">Cerrar sesión</a></li>
+						<li class="nav-item"><a class="nav-link" href="login.jsp">Cerrar sesiï¿½n</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
-		<!-- Contenido de la página -->
+		<!-- Contenido de la pï¿½gina -->
 		<div class="row mt-3">
 			<!-- Botones para acciones -->
 			<div class="col-md-4">
@@ -63,7 +63,7 @@
 			</div>
 		</div>
 
-		<!-- Botón de Arqueo -->
+		<!-- Botï¿½n de Arqueo -->
 		<div class="row mt-3">
 			<div class="col-md-12">
 				<div class="card btn-container">
@@ -90,10 +90,10 @@
 									<input type="text" class="form-control" id="idCliente" name="idCliente">
 								</div>
 								<div class="mb-3">
-									<label for="metodo_pago" class="form-label">Método de Pago</label>
+									<label for="metodo_pago" class="form-label">Mï¿½todo de Pago</label>
 									<select class="form-select" id="metodo_pago" name="metodo_pago">
 										<option value="efectivo">Efectivo</option>
-										<option value="tarjeta">Tarjeta de Crédito</option>
+										<option value="tarjeta">Tarjeta de Crï¿½dito</option>
 										<option value="transferencia">Transferencia Bancaria</option>
 									</select>
 								</div>
@@ -113,7 +113,7 @@
 										<tr>
 											<th>ID Producto</th>
 											<th>Nombre</th>
-											<th>Descripción</th>
+											<th>Descripciï¿½n</th>
 											<th>ID Proveedor</th>
 											<th>Precio</th>
 											<th>Cantidad</th>
@@ -128,7 +128,7 @@
 							</div>
 							<input type="hidden" name="totalVenta" id="totalVenta">
 							<button type="submit" class="btn btn-success" id="submitBtn">Registrar Venta</button>
-							<button type="button" class="btn btn-secondary" id="btnAtrasVenta">Atrás</button>
+							<button type="button" class="btn btn-secondary" id="btnAtrasVenta">Atrï¿½s</button>
 						</form>
 					</div>
 				</div>
@@ -141,14 +141,14 @@
 				<div class="card">
 					<div class="card-body text-center">
 						<h5 class="card-title">Eliminar Cliente</h5>
-						<!-- Eliminar el formulario y llamar a la función eliminaCliente() -->
+						<!-- Eliminar el formulario y llamar a la funciï¿½n eliminaCliente() -->
 						<div class="mb-3">
-							<label for="cedulaClienteEliminar" class="form-label">Cédula Cliente</label>
+							<label for="cedulaClienteEliminar" class="form-label">Cï¿½dula Cliente</label>
 							<input type="text" class="form-control" id="cedula" name="cedula">
 						</div>
 						<button type="button" class="btn btn-danger" id="submitEliminarCliente"
 							onclick="eliminaCliente()">Eliminar</button>
-						<button type="button" class="btn btn-secondary" id="btnAtrasEliminarCliente">Atrás</button>
+						<button type="button" class="btn btn-secondary" id="btnAtrasEliminarCliente">Atrï¿½s</button>
 					</div>
 				</div>
 			</div>
@@ -163,7 +163,7 @@
 						<h5 class="card-title">Agregar Cliente</h5>
 						<form id="agregarClienteForm" method="post" action="/ClipMagico/cliente">
 							<div class="mb-3">
-								<label for="cedulaClienteAgregar" class="form-label">Cédula Cliente</label>
+								<label for="cedulaClienteAgregar" class="form-label">Cï¿½dula Cliente</label>
 								<input type="text" class="form-control" id="cedulaClienteAgregar"
 									name="cedulaClienteAgregar">
 							</div>
@@ -173,17 +173,17 @@
 									name="nombreClienteAgregar">
 							</div>
 							<div class="mb-3">
-								<label for="direccionClienteAgregar" class="form-label">Dirección Cliente</label>
+								<label for="direccionClienteAgregar" class="form-label">Direcciï¿½n Cliente</label>
 								<input type="text" class="form-control" id="direccionClienteAgregar"
 									name="direccionClienteAgregar">
 							</div>
 							<div class="mb-3">
-								<label for="telefonoClienteAgregar" class="form-label">Teléfono Cliente</label>
+								<label for="telefonoClienteAgregar" class="form-label">Telï¿½fono Cliente</label>
 								<input type="text" class="form-control" id="telefonoClienteAgregar"
 									name="telefonoClienteAgregar">
 							</div>
 							<button type="submit" class="btn btn-primary" id="submitAgregarCliente">Agregar</button>
-							<button type="button" class="btn btn-secondary" id="btnAtrasAgregarCliente">Atrás</button>
+							<button type="button" class="btn btn-secondary" id="btnAtrasAgregarCliente">Atrï¿½s</button>
 						</form>
 					</div>
 				</div>
