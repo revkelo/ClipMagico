@@ -52,7 +52,11 @@ public class ServletProveedor  extends HttpServlet{
 		int idproveedor = Integer.parseInt(req.getParameter("idProveedor"));
 		prov.eliminarProveedor(idproveedor);
 		
-		out.println("<html><body onload=\"showLoginError()\">  <h1>ELIMINADO</h1> </body></html>");
-		resp.setHeader("Refresh", "5; URL=administrador.html");
+		  resp.setContentType("text/html");
+	        PrintWriter out = resp.getWriter();
+	        out.println("<html><body onload=\"showLoginError()\">  <h1>ERROR</h1> </body></html>");
+	        resp.setHeader("Refresh", "5; URL=administrados.html");
+
+	        out.close();
 	}
 }
