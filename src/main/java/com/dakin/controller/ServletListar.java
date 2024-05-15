@@ -47,19 +47,19 @@ public class ServletListar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Método que maneja la petición GET y muestra la información de los aspirantes
+	 * Mï¿½todo que maneja la peticiï¿½n GET y muestra la informaciï¿½n de los aspirantes
 	 * en una tabla HTML por carrera.
 	 * 
-	 * @param req  objeto HttpServletRequest que contiene la información de la
+	 * @param req  objeto HttpServletRequest que contiene la informaciï¿½n de la
 	 *             solicitud del cliente.
 	 * 
-	 * @param resp objeto HttpServletResponse que contiene la información de la
+	 * @param resp objeto HttpServletResponse que contiene la informaciï¿½n de la
 	 *             respuesta del servidor.
 	 * 
 	 * @throws ServletException si ocurre un error en el servlet.
 	 * 
 	 * @throws IOException      si ocurre un error de entrada/salida al manejar la
-	 *                          petición.
+	 *                          peticiï¿½n.
 	 */
 
 	@Override
@@ -73,7 +73,7 @@ public class ServletListar extends HttpServlet {
 		if (mostrar.equals("cliente")) {
 
 			ClienteDAO cli = new ClienteDAO(db);
-			ArrayList<ClienteDTO> listaClientes = cli.mostrarClientes(); // Método para obtener clientes de la base de
+			ArrayList<ClienteDTO> listaClientes = cli.mostrarClientes(); // Mï¿½todo para obtener clientes de la base de
 																			// datos
 
 			salida.println("<!DOCTYPE html>");
@@ -93,8 +93,8 @@ public class ServletListar extends HttpServlet {
 			salida.println("<th>ID</th>");
 			salida.println("<th>Nombre</th>");
 			salida.println("<th>Cedula</th>");
-			salida.println("<th>Dirección</th>");
-			salida.println("<th>Teléfono</th>");
+			salida.println("<th>Direcciï¿½n</th>");
+			salida.println("<th>Telï¿½fono</th>");
 			salida.println("</tr>");
 			salida.println("</thead>");
 			salida.println("<tbody>");
@@ -120,7 +120,7 @@ public class ServletListar extends HttpServlet {
 		} else if (mostrar.equals("proveedor")) {
 
 			ProveedorDAO proveedor1 = new ProveedorDAO(db);
-			ArrayList<ProveedorDTO> listaProveedores = proveedor1.mostrarProveedores(); // Método para obtener
+			ArrayList<ProveedorDTO> listaProveedores = proveedor1.mostrarProveedores(); // Mï¿½todo para obtener
 																						// proveedores de la base de
 																						// datos
 
@@ -140,9 +140,9 @@ public class ServletListar extends HttpServlet {
 			salida.println("<tr>");
 			salida.println("<th>ID Proveedor</th>");
 			salida.println("<th>Nombre</th>");
-			salida.println("<th>Dirección</th>");
+			salida.println("<th>Direcciï¿½n</th>");
 			salida.println("<th>NIT</th>");
-			salida.println("<th>Teléfono</th>");
+			salida.println("<th>Telï¿½fono</th>");
 			salida.println("</tr>");
 			salida.println("</thead>");
 			salida.println("<tbody>");
@@ -168,7 +168,7 @@ public class ServletListar extends HttpServlet {
 
 			VentaDAO ven = new VentaDAO(db);
 
-			ArrayList<VentaDTO> listaVentas = ven.mostrarVentas(); // Método para obtener ventas de la base de datos
+			ArrayList<VentaDTO> listaVentas = ven.mostrarVentas(); // Mï¿½todo para obtener ventas de la base de datos
 
 			salida.println("<!DOCTYPE html>");
 			salida.println("<html>");
@@ -186,7 +186,7 @@ public class ServletListar extends HttpServlet {
 			salida.println("<tr>");
 			salida.println("<th>ID Venta</th>");
 			salida.println("<th>ID Cliente</th>");
-			salida.println("<th>Método de Pago</th>");
+			salida.println("<th>Mï¿½todo de Pago</th>");
 			salida.println("<th>Fecha</th>");
 			salida.println("</tr>");
 			salida.println("</thead>");
@@ -211,7 +211,7 @@ public class ServletListar extends HttpServlet {
 		} else if (mostrar.equals("producto_venta")) {
 
 			Productos_ventaDAO pv = new Productos_ventaDAO(db);
-			ArrayList<Productos_ventaDTO> listaProductosv = pv.mostrarProductoVenta(); // Método para obtener productos
+			ArrayList<Productos_ventaDTO> listaProductosv = pv.mostrarProductoVenta(); // Mï¿½todo para obtener productos
 																			// de la base de datos
 
 			salida.println("<!DOCTYPE html>");
@@ -253,7 +253,7 @@ public class ServletListar extends HttpServlet {
 		} else if (mostrar.equals("producto")) {
 
 			ProductoDAO pro = new ProductoDAO(db);
-			ArrayList<ProductoDTO> listaProductos = pro.mostrarProductos(); // Método para obtener productos
+			ArrayList<ProductoDTO> listaProductos = pro.mostrarProductos(); // Mï¿½todo para obtener productos
 																			// de la base de datos
 
 			salida.println("<!DOCTYPE html>");
@@ -272,7 +272,7 @@ public class ServletListar extends HttpServlet {
 			salida.println("<tr>");
 			salida.println("<th>ID Producto</th>");
 			salida.println("<th>Nombre</th>");
-			salida.println("<th>Descripción</th>");
+			salida.println("<th>Descripciï¿½n</th>");
 			salida.println("<th>ID Proveedor</th>");
 			salida.println("<th>Cantidad</th>");
 			salida.println("<th>Precio</th>");
@@ -289,6 +289,11 @@ public class ServletListar extends HttpServlet {
 				salida.println("<td>" + producto.getCantidad() + "</td>");
 				salida.println("<td>" + producto.getPrecio() + "</td>");
 				salida.println("</tr>");
+				
+				if (producto.getCantidad() <= 10) {
+			        salida.println("<script>alert('El producto con ID " + producto.getIdProducto() + " estÃ¡ por agotarse.')</script>");
+			        System.out.println("El producto con ID " + producto.getIdProducto() + " estÃ¡ por agotarse.");
+			    }
 			}
 
 			salida.println("</tbody>");
@@ -302,7 +307,7 @@ public class ServletListar extends HttpServlet {
 		}else if (mostrar.equals("factura")) {
 
 				FacturaDAO fa = new FacturaDAO(db);
-				ArrayList<FacturaDTO> listafactura = fa.mostrarFacturas(); // Método para obtener productos
+				ArrayList<FacturaDTO> listafactura = fa.mostrarFacturas(); // Mï¿½todo para obtener productos
 																				// de la base de datos
 
 				salida.println("<!DOCTYPE html>");
@@ -351,19 +356,19 @@ public class ServletListar extends HttpServlet {
 
 	/**
 	 * 
-	 * Método que se ejecuta al enviar el formulario con método POST.
+	 * Mï¿½todo que se ejecuta al enviar el formulario con mï¿½todo POST.
 	 * 
-	 * Recibe un objeto HttpServletRequest con la información de la solicitud HTTP
+	 * Recibe un objeto HttpServletRequest con la informaciï¿½n de la solicitud HTTP
 	 * 
-	 * y un objeto HttpServletResponse con la información de la respuesta HTTP.
+	 * y un objeto HttpServletResponse con la informaciï¿½n de la respuesta HTTP.
 	 * 
-	 * @param req  objeto HttpServletRequest con la información de la solicitud
+	 * @param req  objeto HttpServletRequest con la informaciï¿½n de la solicitud
 	 *             HTTP.
 	 * 
-	 * @param resp objeto HttpServletResponse con la información de la respuesta
+	 * @param resp objeto HttpServletResponse con la informaciï¿½n de la respuesta
 	 *             HTTP.
 	 * 
-	 * @throws ServletException si ocurre un error en la ejecución del servlet.
+	 * @throws ServletException si ocurre un error en la ejecuciï¿½n del servlet.
 	 * 
 	 * @throws IOException      si ocurre un error en la entrada o salida de datos.
 	 */

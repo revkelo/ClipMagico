@@ -24,13 +24,13 @@ document.getElementById('btnAtrasVenta').addEventListener('click', function() {
 
 // Función para eliminar un producto
 function eliminarProducto() {
-	var idProducto = document.getElementById("idProducto").value;
+	var cedula = document.getElementById("cedula").value;
 	var xhr = new XMLHttpRequest();
-	xhr.open("DELETE", "/ClipMagico/prod?idProducto=" + idProducto, true);
+	xhr.open("DELETE", "/ClipMagico/cliente?cedula=" + cedula, true);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			// Manejar la respuesta si es necesaria
-			alert("Producto eliminado correctamente");
+			console.log("Cliente eliminado correctamente");
 		}
 	};
 	xhr.send();
@@ -44,7 +44,7 @@ function eliminaCliente() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			// Manejar la respuesta si es necesaria
-			alert("Cliente eliminado correctamente");
+			console.log("Cliente eliminado correctamente");
 		}
 	};
 	xhr.send();
@@ -58,7 +58,7 @@ function eliminaProveedor() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			// Manejar la respuesta si es necesaria
-			alert("Proveedor eliminado correctamente");
+			console.log("Proveedor eliminado correctamente");
 		}
 	};
 	xhr.send();
@@ -168,3 +168,4 @@ function updateTotalSum() {
 	$('#totalSum').text('Suma Total: $' + totalSum.toFixed(2));
 	$('#totalVenta').val(totalSum.toFixed(2)); // Actualizar el campo de entrada oculto para el monto total
 }
+

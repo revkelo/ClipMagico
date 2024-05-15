@@ -20,6 +20,9 @@ public class AplMain {
 		
 		Productos_ventaDAO prod = new Productos_ventaDAO(db);
 		VentaDAO ven = new VentaDAO(db);
+		
+		
+		provee.actualizarProveedor(1, null, null, null, null);
 //		prod.agregarProductoVenta(ven.obtenerMaximoIdVenta(), 2, 1);
 		
 //		

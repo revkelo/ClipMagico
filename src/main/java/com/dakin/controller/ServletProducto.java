@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.dakin.model.BdSql;
+import com.dakin.model.ClienteDAO;
 import com.dakin.model.ProductoDAO;
 import com.dakin.model.ProductoDTO;
 
@@ -16,6 +17,22 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class ServletProducto extends HttpServlet {
 
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if ("DELETE".equals(request.getParameter("_method"))) {
+			// Manejar la solicitud DELETE
+			doDelete(request, response);
+		} else if ("GET".equals(request.getParameter("_method"))) {
+			// Manejar la solicitud GET
+			doGet(request, response);
+		} else {
+			// Manejar la solicitud POST
+			System.out.println("jmmm");
+			doPost(request, response);
+		}
+	}
+
 	/**
 	 * 
 	 */
@@ -24,30 +41,53 @@ public class ServletProducto extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String method = req.getParameter("_method");
+		if ("PUT".equals(method)) {
+			doPut(req, resp);
+		} else if ("DELETE".equals(method)) {
+			doPut(req, resp);
+		} else {
+
+			BdSql db = new BdSql();
+			db.MySQLConnect();
+			ProductoDAO prod = new ProductoDAO(db);
+
+			String nombre = req.getParameter("nombreProdA");
+			String descripcion = req.getParameter("descripcionProdA");
+			int idprov = Integer.parseInt(req.getParameter("idproveedor"));
+			int cantidad = Integer.parseInt(req.getParameter("cantidadProdA"));
+			int precio = Integer.parseInt(req.getParameter("precioProdA"));
+
+			System.out.println("Nombre: " + nombre);
+			System.out.println("Descripci�n: " + descripcion);
+			System.out.println("ID proveedor: " + idprov);
+			System.out.println("Cantidad: " + cantidad);
+			System.out.println("Precio: " + precio);
+
+			prod.agregarProducto(nombre, descripcion, idprov, cantidad, precio);
+
+		}
+
+	}
+
+	protected void doPut(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+
+		System.out.println("entro modificar");
+
 		BdSql db = new BdSql();
 		db.MySQLConnect();
+
 		ProductoDAO prod = new ProductoDAO(db);
 
-		String nombre = req.getParameter("nombre");
-		String descripcion = req.getParameter("descripcion");
+		String nombre = req.getParameter("nombreProdM");
+		String descripcion = req.getParameter("descripcionProdM");
 		int idprov = Integer.parseInt(req.getParameter("idproveedor"));
-		int cantidad = Integer.parseInt(req.getParameter("cantidad"));
-		int precio = Integer.parseInt(req.getParameter("precio"));
+		int cantidad = Integer.parseInt(req.getParameter("cantidadProdM"));
+		int precio = Integer.parseInt(req.getParameter("precioProdM"));
 
-		System.out.println("Nombre: " + nombre);
-		System.out.println("Descripci�n: " + descripcion);
-		System.out.println("ID proveedor: " + idprov);
-		System.out.println("Cantidad: " + cantidad);
-		System.out.println("Precio: " + precio);
+		prod.actualizarProducto(idprov, nombre, descripcion, idprov, cantidad, precio);
 
-		prod.agregarProducto(nombre, descripcion, idprov, cantidad, precio);
-
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter();
-		out.println("<html><body onload=\"showLoginError()\">  <h1>GUARDADO</h1> </body></html>");
-
-		out.close();
-
+		System.out.println("Actualizado");
 	}
 
 	@Override

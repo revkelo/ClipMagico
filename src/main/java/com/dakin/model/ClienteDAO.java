@@ -46,40 +46,39 @@ public class ClienteDAO {
 	}
 
 	public ArrayList<ClienteDTO> mostrarClientes() {
-	    ArrayList<ClienteDTO> clientes = new ArrayList<>();
+		ArrayList<ClienteDTO> clientes = new ArrayList<>();
 
-	    String query = "SELECT * FROM Cliente";
-	    try (PreparedStatement statement = conexion.prepareStatement(query);
-	         ResultSet resultSet = statement.executeQuery()) {
-	        while (resultSet.next()) {
-	            ClienteDTO cliente = new ClienteDTO(resultSet.getInt("id_cliente"),
-	                    resultSet.getInt("cedula"),
-	                    resultSet.getString("nombre"),
-	                    resultSet.getString("direccion"),
-	                    resultSet.getString("telefonoC"));
-	            clientes.add(cliente);
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return clientes;
-	}
-
-	// Actualizar cliente
-	public void actualizarCliente(int cedula, String nombre, String direccion, String telefonoC) {
-
-		String query = "UPDATE Cliente SET cedula = ?, nombre = ?, direccion = ?, telefonoC = ? WHERE cedula = ?";
-		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setInt(1, cedula);
-			statement.setString(2, nombre);
-			statement.setString(3, direccion);
-			statement.setString(4, telefonoC);
-			
-			statement.executeUpdate();
-			System.out.println("Cliente actualizado correctamente.");
-
+		String query = "SELECT * FROM Cliente";
+		try (PreparedStatement statement = conexion.prepareStatement(query);
+				ResultSet resultSet = statement.executeQuery()) {
+			while (resultSet.next()) {
+				ClienteDTO cliente = new ClienteDTO(resultSet.getInt("id_cliente"), resultSet.getInt("cedula"),
+						resultSet.getString("nombre"), resultSet.getString("direccion"),
+						resultSet.getString("telefonoC"));
+				clientes.add(cliente);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return clientes;
 	}
+
+	// Actualizar cliente
+	public void actualizarCliente(int idCliente, String nombre, String direccion, String telefonoC) {
+	 
+		String query = "UPDATE Cliente SET nombre = ?, direccion = ?, telefonoC = ? WHERE id_Cliente = ?";
+	    try (PreparedStatement statement = conexion.prepareStatement(query)) {
+	        statement.setString(1, nombre);
+	        statement.setString(2, direccion);
+	        statement.setString(3, telefonoC);
+	        statement.setInt(4, idCliente);
+
+	        statement.executeUpdate();
+	        System.out.println("Cliente actualizado correctamente.");
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+
 }
