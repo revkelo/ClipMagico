@@ -41,7 +41,7 @@ public class ServletProducto extends HttpServlet {
 		System.out.println("Cantidad: " + cantidad);
 		System.out.println("Precio: " + precio);
 
-//		prod.agregarProducto(nombre, descripcion, idprov, cantidad, precio);
+		prod.agregarProducto(nombre, descripcion, idprov, cantidad, precio);
 		
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();

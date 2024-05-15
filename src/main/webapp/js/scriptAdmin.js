@@ -24,13 +24,13 @@ document.getElementById('btnAtrasVenta').addEventListener('click', function() {
 
 // Función para eliminar un producto
 function eliminarProducto() {
-	var cedula = document.getElementById("cedula").value;
+	var idProducto = document.getElementById("idProducto").value;
 	var xhr = new XMLHttpRequest();
-	xhr.open("DELETE", "/ClipMagico/cliente?cedula=" + cedula, true);
+	xhr.open("DELETE", "/ClipMagico/prod?idProducto=" + idProducto, true);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			// Manejar la respuesta si es necesaria
-			console.log("Cliente eliminado correctamente");
+			alert("Producto eliminado correctamente");
 		}
 	};
 	xhr.send();
@@ -44,7 +44,7 @@ function eliminaCliente() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			// Manejar la respuesta si es necesaria
-			console.log("Cliente eliminado correctamente");
+			alert("Cliente eliminado correctamente");
 		}
 	};
 	xhr.send();
@@ -58,7 +58,7 @@ function eliminaProveedor() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			// Manejar la respuesta si es necesaria
-			console.log("Proveedor eliminado correctamente");
+			alert("Proveedor eliminado correctamente");
 		}
 	};
 	xhr.send();

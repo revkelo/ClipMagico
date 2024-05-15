@@ -16,7 +16,7 @@ public class ProductoDAO {
 
     // Agregar producto
     public void agregarProducto(String nombre, String descripcion, int idProveedor, int cantidad, int precio) {
-        String query = "INSERT INTO Producto (nombre, descripcion, id_proveedor,cantidad, precio) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Producto (nombre, descripcion, id_proveedor, cantidad, precio) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, nombre);
             statement.setString(2, descripcion);

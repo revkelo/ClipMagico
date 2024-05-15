@@ -141,18 +141,19 @@
 				<div class="card">
 					<div class="card-body text-center">
 						<h5 class="card-title">Eliminar Cliente</h5>
-						<form id="eliminarClienteForm" method="post" action="/ClipMagico/eliminarCliente">
-							<div class="mb-3">
-								<label for="cedulaClienteEliminar" class="form-label">Cédula Cliente</label>
-								<input type="text" class="form-control" id="cedula" name="cedula">
-							</div>
-							<button type="submit" class="btn btn-danger" id="submitEliminarCliente">Eliminar</button>
-							<button type="button" class="btn btn-secondary" id="btnAtrasEliminarCliente">Atrás</button>
-						</form>
+						<!-- Eliminar el formulario y llamar a la función eliminaCliente() -->
+						<div class="mb-3">
+							<label for="cedulaClienteEliminar" class="form-label">Cédula Cliente</label>
+							<input type="text" class="form-control" id="cedula" name="cedula">
+						</div>
+						<button type="button" class="btn btn-danger" id="submitEliminarCliente"
+							onclick="eliminaCliente()">Eliminar</button>
+						<button type="button" class="btn btn-secondary" id="btnAtrasEliminarCliente">Atrás</button>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 		<!-- Formulario para agregar cliente -->
 		<div class="row mt-3" id="formularioAgregarCliente" style="display: none;">

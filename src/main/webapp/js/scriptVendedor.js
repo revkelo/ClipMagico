@@ -102,7 +102,7 @@ function eliminaCliente() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			// Manejar la respuesta si es necesaria
-			console.log("Cliente eliminado correctamente");
+			alert("Cliente eliminado correctamente");
 		}
 	};
 	xhr.send();
