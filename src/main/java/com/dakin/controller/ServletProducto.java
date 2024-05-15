@@ -23,12 +23,11 @@ public class ServletProducto extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		System.out.println("entro");
+
 		BdSql db = new BdSql();
 		db.MySQLConnect();
 		ProductoDAO prod = new ProductoDAO(db);
-		
+
 		String nombre = req.getParameter("nombre");
 		String descripcion = req.getParameter("descripcion");
 		int idprov = Integer.parseInt(req.getParameter("idproveedor"));
@@ -36,25 +35,24 @@ public class ServletProducto extends HttpServlet {
 		int precio = Integer.parseInt(req.getParameter("precio"));
 
 		System.out.println("Nombre: " + nombre);
-		System.out.println("Descripción: " + descripcion);
+		System.out.println("Descripciï¿½n: " + descripcion);
 		System.out.println("ID proveedor: " + idprov);
 		System.out.println("Cantidad: " + cantidad);
 		System.out.println("Precio: " + precio);
 
 		prod.agregarProducto(nombre, descripcion, idprov, cantidad, precio);
-		
+
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("<html><body onload=\"showLoginError()\">  <h1>GUARDADO</h1> </body></html>");
-		resp.setHeader("Refresh", "2;");
-		
 
 		out.close();
-		
+
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		BdSql db = new BdSql();
 		ProductoDAO dao = new ProductoDAO(db);
 		String productId = req.getParameter("id");
@@ -92,22 +90,21 @@ public class ServletProducto extends HttpServlet {
 		Gson gson = new Gson();
 		return gson.toJson(producto);
 	}
-	
+
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		
 		BdSql db = new BdSql();
 		db.MySQLConnect();
-		
+
 		ProductoDAO prod = new ProductoDAO(db);
-		
+
 		int idprov = Integer.parseInt(req.getParameter("idProducto"));
-		
+
 		prod.eliminarProducto(idprov);
-		
+
 		System.out.println(idprov);
-		
+
 	}
 
 }
