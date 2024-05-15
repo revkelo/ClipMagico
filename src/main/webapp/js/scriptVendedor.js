@@ -107,3 +107,8 @@ function eliminaCliente() {
 	};
 	xhr.send();
 }
+
+// Manejador de eventos para el botón de Arqueo
+$('#btnArqueo').click(function() {
+    alert('Función no disponible por el momento.');
+});
