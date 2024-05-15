@@ -59,8 +59,6 @@ $('#getPriceBtn').click(function(event) {
 		// Update total sum
 		updateTotalSum();
 
-		$('#productId').val('');
-		$('#quantity').val('');
 	});
 });
 

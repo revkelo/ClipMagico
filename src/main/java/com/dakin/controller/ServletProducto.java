@@ -13,7 +13,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import com.dakin.model.BdSql;
 
 public class ServletProducto extends HttpServlet {
 
@@ -42,7 +41,7 @@ public class ServletProducto extends HttpServlet {
 		System.out.println("Cantidad: " + cantidad);
 		System.out.println("Precio: " + precio);
 
-		prod.agregarProducto(nombre, descripcion, idprov, cantidad, precio);
+//		prod.agregarProducto(nombre, descripcion, idprov, cantidad, precio);
 		
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
