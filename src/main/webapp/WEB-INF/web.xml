@@ -18,6 +18,11 @@
 		<servlet-name>ServletProducto</servlet-name>
 		<servlet-class>com.dakin.controller.ServletProducto</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>ServletProveedor</servlet-name>
+		<servlet-class>com.dakin.controller.ServletProveedor</servlet-class>
+	</servlet>
 
 
 	<servlet>
@@ -39,6 +44,11 @@
 	<servlet-mapping>
 		<servlet-name>ServletProducto</servlet-name>
 		<url-pattern>/prod</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServletProveedor</servlet-name>
+		<url-pattern>/prov</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
