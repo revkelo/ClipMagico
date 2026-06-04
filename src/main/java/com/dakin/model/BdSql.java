@@ -14,13 +14,12 @@ public class BdSql {
 
     public Connection MySQLConnect() {
         try {
-            // Driver JDBC
-            Class.forName("com.mysql.jdbc.Driver");
-            // URL de conexión a la base de datos
-            String servidor = "jdbc:mysql://26.6.131.178:3306/clipmagico";
-            //El root es el nombre de usuario por default. No hay contraseña
-            String usuario = "root";
-            String pass = "";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String servidor = System.getenv("DB_URL") != null
+                    ? System.getenv("DB_URL")
+                    : "jdbc:mysql://localhost:3306/clipmagico";
+            String usuario  = System.getenv("DB_USERNAME") != null ? System.getenv("DB_USERNAME") : "root";
+            String pass     = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "";
             // Iniciar la conexión
             conexion = DriverManager.getConnection(servidor, usuario, pass);
             System.out.println("Conexión a MySQL exitosa");
